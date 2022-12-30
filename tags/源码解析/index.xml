@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>源码解析 on yicixin&#39;s blog</title>
-    <link>http://yici.xin/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
+    <link>https://www.yici.xin/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
     <description>Recent content in 源码解析 on yicixin&#39;s blog</description>
     <image>
-      <url>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 30 Dec 2022 10:49:41 +0800</lastBuildDate><atom:link href="http://yici.xin/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Dec 2022 10:49:41 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Golang-map的操作</title>
-      <link>http://yici.xin/post/tech/golang-map%E7%9A%84%E6%93%8D%E4%BD%9C/</link>
+      <link>https://www.yici.xin/post/tech/golang-map%E7%9A%84%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Fri, 30 Dec 2022 10:49:41 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/golang-map%E7%9A%84%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://www.yici.xin/post/tech/golang-map%E7%9A%84%E6%93%8D%E4%BD%9C/</guid>
       <description>创建 map 创建 map 的语法很简单
 // 不指定map长度 ageMp := make(map[string]int) // 指定map长度 ageMp := make(map[string]int, 8) // ageMp 为 nil，不能向其添加元素，会直接panic var ageMp map[string]int 通过汇编语言，我们能够跟踪到 map 的创建最终会调用 runtime.makemap 方法
 // makemap implements Go map creation for make(map[k]v, hint). // If the compiler has determined that the map or the first bucket // can be created on the stack, h and/or bucket may be non-nil. // If h != nil, the map can be created directly in h.</description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>Go程序的启动过程</title>
-      <link>http://yici.xin/post/tech/go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</link>
+      <link>https://www.yici.xin/post/tech/go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Tue, 27 Dec 2022 18:35:19 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</guid>
+      <guid>https://www.yici.xin/post/tech/go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</guid>
       <description>我们知道go的一个优点是支持多个平台，这一特性的背后是对各种不同平台硬件指令的兼容，在go程序启动流程的第一步，就需要区分不同的硬件平台。
 我目前使用的电脑是苹果的m1芯片mbp，该芯片使用的是arm架构，操作系统底层是darwin，对应的启动汇编文件是：runtime/rt0_darwin_arm64.s。
 作个对比，我这里也放上amd64的启动汇编。
@@ -37,19 +37,19 @@ runtime·check 运行时类型检查，主要是校验编译器的翻译工作�
     
     <item>
       <title>Golang读写锁</title>
-      <link>http://yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</link>
+      <link>https://www.yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</link>
       <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</guid>
+      <guid>https://www.yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</guid>
       <description>之前写过关于互斥锁的内容， Golang互斥锁-Mutex 日期: 2022-12-27 &amp;nbsp; 标签: #golang&amp;nbsp; #锁&amp;nbsp; #源码解析&amp;nbsp; 互斥锁结构 // A Mutex is a mutual exclusion lock. // The zero value for a Mutex is an unlocked mutex. // // A Mutex must not be copied after first use. type Mutex struct { state int32 sema uint32 } state表示当前互斥锁的状态， sema是用于控制锁状态的信号量 在默认情况下，互斥锁的所有状态位都是 0，int32 中的不同位分别表示了不同的状态： mutexLocked — 表示互斥锁的锁定状态； mutexWoken — 唤醒模式，此时释放锁的g不会唤醒休眠的g； mutexStarving — 当前的互斥锁进入饥饿状态； waitersCount — 当前互斥锁上等待的 Goroutine 个数； 正常模式和饥饿模式的区别: 在正常模式下，锁的等待者会按照先进先出的顺序获取锁。但是刚被唤起的 Goroutine 与新创建的 Goroutine 竞争时，大概率会获取不到锁，为了减少这种情况的出现，一旦 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止部分 Goroutine 被『饿死』。 .</description>
     </item>
     
     <item>
       <title>Golang互斥锁-Mutex</title>
-      <link>http://yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/</link>
+      <link>https://www.yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/</link>
       <pubDate>Tue, 27 Dec 2022 18:22:59 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/</guid>
+      <guid>https://www.yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/</guid>
       <description>互斥锁结构 // A Mutex is a mutual exclusion lock. // The zero value for a Mutex is an unlocked mutex. // // A Mutex must not be copied after first use. type Mutex struct { state int32 sema uint32 } state表示当前互斥锁的状态， sema是用于控制锁状态的信号量
 在默认情况下，互斥锁的所有状态位都是 0，int32 中的不同位分别表示了不同的状态：
 mutexLocked — 表示互斥锁的锁定状态；
@@ -62,10 +62,10 @@ waitersCount — 当前互斥锁上等待的 Goroutine 个数；
     
     <item>
       <title>golang-map介绍</title>
-      <link>http://yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</link>
+      <link>https://www.yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Wed, 05 Jan 2022 23:38:06 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>https://www.yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</guid>
       <description>本文中使用的 go 版本：
 go version go1.17.2 darwin/amd64
 内容概述 本文介绍 golang 中经常用到的结构-map，简称哈希表、字典。介绍其结构及设计思路。

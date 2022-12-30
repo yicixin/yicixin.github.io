@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>wire on yicixin&#39;s blog</title>
-    <link>http://yici.xin/tags/wire/</link>
+    <link>https://www.yici.xin/tags/wire/</link>
     <description>Recent content in wire on yicixin&#39;s blog</description>
     <image>
-      <url>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 27 Dec 2022 18:09:30 +0800</lastBuildDate><atom:link href="http://yici.xin/tags/wire/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Dec 2022 18:09:30 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/wire/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Wire 依赖注入</title>
-      <link>http://yici.xin/post/tech/wire-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</link>
+      <link>https://www.yici.xin/post/tech/wire-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</link>
       <pubDate>Tue, 27 Dec 2022 18:09:30 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/wire-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</guid>
+      <guid>https://www.yici.xin/post/tech/wire-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</guid>
       <description>用法 一般会在一个名为wire.go的文件里提供需要自动注入的函数，在开头添加好tag，在函数中使用wire.Build方法，并提供创建依赖的方法，多个依赖可以组装为一个Set。
 示例 // +build wireinject // tag不能忘 var ormSet = wire.NewSet(mysql.Newengine) var DataSourceSet = wire.NewSet(ormSet, japi.GetClient, cache.NewRedisCache) func InitAuthorRepo() AuthorRepoInterface { wire.Build( NewAuthorRepo, // 可以用这种方式替代New函数，特别是New的参数比较多时，*表示对结构体的全部字段进行生成 // wire.Struct(new(authorRepo), &amp;#34;*&amp;#34;), // 如果NewAuthorRepo的返回值不是显示声明AuthorRepoInterface，wire会提示无AuthorRepoInterface的provider // 此时就需要下面的语句进行绑定 // wire.Bind(new(AuthorRepoInterface), new(*authorRepo)), repo.DataSourceSet, ) return nil } 特性 wire.Struct type App struct { Foo *Foo Bar *Bar NoInject int `wire:&amp;#34;-&amp;#34;` } 该方法可以代替New函数，特别是New函数参数较多，不太好写的时候。
 wire.Struct(new(App),&amp;quot;Foo&amp;quot;,&amp;quot;Bar&amp;quot;)生成指定的字段。

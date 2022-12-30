@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>源码 on yicixin&#39;s blog</title>
-    <link>http://yici.xin/tags/%E6%BA%90%E7%A0%81/</link>
+    <link>https://www.yici.xin/tags/%E6%BA%90%E7%A0%81/</link>
     <description>Recent content in 源码 on yicixin&#39;s blog</description>
     <image>
-      <url>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 21 Nov 2022 17:05:22 +0800</lastBuildDate><atom:link href="http://yici.xin/tags/%E6%BA%90%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Nov 2022 17:05:22 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/%E6%BA%90%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go Sync Pool</title>
-      <link>http://yici.xin/post/tech/go-sync-pool/</link>
+      <link>https://www.yici.xin/post/tech/go-sync-pool/</link>
       <pubDate>Mon, 21 Nov 2022 17:05:22 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/go-sync-pool/</guid>
+      <guid>https://www.yici.xin/post/tech/go-sync-pool/</guid>
       <description>go sync pool</description>
     </item>
     

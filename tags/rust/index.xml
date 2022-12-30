@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>rust on yicixin&#39;s blog</title>
-    <link>http://yici.xin/tags/rust/</link>
+    <link>https://www.yici.xin/tags/rust/</link>
     <description>Recent content in rust on yicixin&#39;s blog</description>
     <image>
-      <url>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 29 Dec 2022 15:41:07 +0800</lastBuildDate><atom:link href="http://yici.xin/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Dec 2022 15:41:07 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rust Option枚举</title>
-      <link>http://yici.xin/post/read/rust-option%E6%9E%9A%E4%B8%BE/</link>
+      <link>https://www.yici.xin/post/read/rust-option%E6%9E%9A%E4%B8%BE/</link>
       <pubDate>Thu, 29 Dec 2022 15:41:07 +0800</pubDate>
       
-      <guid>http://yici.xin/post/read/rust-option%E6%9E%9A%E4%B8%BE/</guid>
+      <guid>https://www.yici.xin/post/read/rust-option%E6%9E%9A%E4%B8%BE/</guid>
       <description>原文链接🔗
 The Option Enum and Its Advantages Over Null Values 比null更优的选择——Option枚举
 This section explores a case study of Option, which is another enum defined by the standard library. The Option type encodes the very common scenario in which a value could be something or it could be nothing.
@@ -26,10 +26,10 @@ For example, if you request the first of a list containing items, you would get 
     
     <item>
       <title>Rust程序设计——枚举</title>
-      <link>http://yici.xin/post/read/rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E6%9E%9A%E4%B8%BE/</link>
+      <link>https://www.yici.xin/post/read/rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E6%9E%9A%E4%B8%BE/</link>
       <pubDate>Wed, 28 Dec 2022 23:09:59 +0800</pubDate>
       
-      <guid>http://yici.xin/post/read/rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E6%9E%9A%E4%B8%BE/</guid>
+      <guid>https://www.yici.xin/post/read/rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E6%9E%9A%E4%B8%BE/</guid>
       <description>原文链接🔗
 Defining an Enum 定义枚举
 Where structs give you a way of grouping together related fields and data, like a Rectangle with its width and height, enums give you a way of saying a value is one of a possible set of values. For example, we may want to say that Rectangle is one of a set of possible shapes that also includes Circle and Triangle. To do this, Rust allows us to encode these possibilities as an enum.</description>
@@ -37,10 +37,10 @@ Where structs give you a way of grouping together related fields and data, like 
     
     <item>
       <title>Rust的所有权系统</title>
-      <link>http://yici.xin/post/tech/rust%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://www.yici.xin/post/tech/rust%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Thu, 22 Dec 2022 16:44:27 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/rust%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://www.yici.xin/post/tech/rust%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E7%B3%BB%E7%BB%9F/</guid>
       <description> 所有权（系统）是 Rust 最为与众不同的特性，对语言的其他部分有着深刻含义。它让 Rust 无需垃圾回收（garbage collector）即可保障内存安全，因此理解 Rust 中所有权如何工作是十分重要的。
 you know，程序的运行其实就是一系列的内存操作，如何管理内存是所有编程语言都逃不开的问题，管理内存的手段也是编程语言的核心特性之一。在rust之前，编程语言对内存的管理有这么两个派别： 以C、C++为首的手动管理派，程序员们需要自己亲自申请、分配和释放内存，java、go、C#的自动管理派，一般称这个机制为垃圾回收(GC)，GC会负责内存的申请、分配、追踪和回收，减轻程序员的负担👀。 而rust给出了一条新的路线，通过所有权系统管理内存，编译器在编译时会根据一系列的规则进行检查，违反了任何规则，程序都不能编译。不过你放心，在运行时，所有权系统的任何功能都不会减慢程序。
 所有权规则 在查看后续内容时，请谨记以下规则
@@ -49,10 +49,10 @@ Rust 中的每一个值都有一个 所有者（owner）。 值在任一时刻�
     
     <item>
       <title>一些rust基础知识</title>
-      <link>http://yici.xin/post/tech/%E4%B8%80%E4%BA%9Brust%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <link>https://www.yici.xin/post/tech/%E4%B8%80%E4%BA%9Brust%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Dec 2022 18:14:01 +0800</pubDate>
       
-      <guid>http://yici.xin/post/tech/%E4%B8%80%E4%BA%9Brust%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://www.yici.xin/post/tech/%E4%B8%80%E4%BA%9Brust%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>变量与可变性 变量的可变性 rust中进行变量的声明时，使用let关键字，如:
 let x; 这样声明出来的变量是不可变的，不可以进行第二次赋值。 如果需要后续可以修改这个变量，在声明时需要加上mut关键字:
 let mut x; 常量 声明常量使用 const 关键字而不是 let，并且必须注明值的类型，且声明时就必须赋值。
