@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>锁 on yicixin&#39;s blog</title>
+    <link>http://yici.xin/tags/%E9%94%81/</link>
+    <description>Recent content in 锁 on yicixin&#39;s blog</description>
+    <image>
+      <url>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 27 Dec 2022 18:26:23 +0800</lastBuildDate><atom:link href="http://yici.xin/tags/%E9%94%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang读写锁</title>
+      <link>http://yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</link>
+      <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
+      
+      <guid>http://yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</guid>
+      <description>之前写过关于互斥锁的内容， Golang互斥锁-Mutex 日期: 2022-12-27 &amp;nbsp; 标签: #golang&amp;nbsp; #锁&amp;nbsp; #源码解析&amp;nbsp; 互斥锁结构 // A Mutex is a mutual exclusion lock. // The zero value for a Mutex is an unlocked mutex. // // A Mutex must not be copied after first use. type Mutex struct { state int32 sema uint32 } state表示当前互斥锁的状态， sema是用于控制锁状态的信号量 在默认情况下，互斥锁的所有状态位都是 0，int32 中的不同位分别表示了不同的状态： mutexLocked — 表示互斥锁的锁定状态； mutexWoken — 唤醒模式，此时释放锁的g不会唤醒休眠的g； mutexStarving — 当前的互斥锁进入饥饿状态； waitersCount — 当前互斥锁上等待的 Goroutine 个数； 正常模式和饥饿模式的区别: 在正常模式下，锁的等待者会按照先进先出的顺序获取锁。但是刚被唤起的 Goroutine 与新创建的 Goroutine 竞争时，大概率会获取不到锁，为了减少这种情况的出现，一旦 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止部分 Goroutine 被『饿死』。 .</description>
+    </item>
+    
+    <item>
+      <title>Golang互斥锁-Mutex</title>
+      <link>http://yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/</link>
+      <pubDate>Tue, 27 Dec 2022 18:22:59 +0800</pubDate>
+      
+      <guid>http://yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/</guid>
+      <description>互斥锁结构 // A Mutex is a mutual exclusion lock. // The zero value for a Mutex is an unlocked mutex. // // A Mutex must not be copied after first use. type Mutex struct { state int32 sema uint32 } state表示当前互斥锁的状态， sema是用于控制锁状态的信号量
+在默认情况下，互斥锁的所有状态位都是 0，int32 中的不同位分别表示了不同的状态：
+mutexLocked — 表示互斥锁的锁定状态；
+mutexWoken — 唤醒模式，此时释放锁的g不会唤醒休眠的g；
+mutexStarving — 当前的互斥锁进入饥饿状态；
+waitersCount — 当前互斥锁上等待的 Goroutine 个数；
+正常模式和饥饿模式的区别:
+在正常模式下，锁的等待者会按照先进先出的顺序获取锁。但是刚被唤起的 Goroutine 与新创建的 Goroutine 竞争时，大概率会获取不到锁，为了减少这种情况的出现，一旦 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止部分 Goroutine 被『饿死』。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>protobuf on yicixin&#39;s blog</title>
+    <link>http://yici.xin/tags/protobuf/</link>
+    <description>Recent content in protobuf on yicixin&#39;s blog</description>
+    <image>
+      <url>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 27 Dec 2022 18:02:40 +0800</lastBuildDate><atom:link href="http://yici.xin/tags/protobuf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Protobuf语法</title>
+      <link>http://yici.xin/post/tech/protobuf%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Tue, 27 Dec 2022 18:02:40 +0800</pubDate>
+      
+      <guid>http://yici.xin/post/tech/protobuf%E8%AF%AD%E6%B3%95/</guid>
+      <description>什么是protobuf？ 一种序列化结构数据的方式，与语言无关，与平台无关，可扩展。和json一样，但是更小更快。
+V3语法介绍 举一个简单的例子，一个分页查询的请求参数，新建一个.proto文件并写入:
+syntax = &amp;#34;proto3&amp;#34;; message SearchRequest { string query = 1; int32 page_num = 2; int32 page_size = 3; } .proto文件的第一行指定了当前正在使用proto3语法，如果未写，proto的编译器会默认使用proto2的语法进行解析。
+SearchRequest定义了三个字段，它们都有类型和名称，并且在最后给了一个唯一编号，编号的作用是在序列化后的二进制序列中标识字段。当编号为1-15的范围内时，在编码时只需要一个字节，而16-2047就需要两个字节，具体原因可以了解一下protobuf的编码原理。所以，1-15的编号最好要保留给那些最经常出现的字段。你能使用的最小编号是1，最大是$2^{29}$-1，不过你不能使用19000-19999，这些编号为protobuf的实现而预保留了，如果你使用了，是过不了编译的。
+在单个.proto文件中能定义多个message类型:
+syntax = &amp;#34;proto3&amp;#34;; message SearchRequest { string query = 1; int32 page_num = 2; int32 page_size = 3; } message SearchResponse { repeated string data = 1; int32 total = 2; } repeated表示该字段是一个可重复值，可以理解为数组。
+注释的写法:
+syntax = &amp;#34;proto3&amp;#34;; /* 请求结构 */ message SearchRequest { string query = 1; int32 page_num = 2; int32 page_size = 3; } /* 响应结构 */ message SearchResponse { repeated string data = 1; int32 total = 2; // 总数 } 如果我们在更新message type时，是直接删除或者注释了字段，在之后其他人来更新时可能会复用被删除或注释的字段编号，如果这时加载了相同proto的旧版本，那么就会导致一些错误。所以protobuf提供了保留字段的机制，使用reserved关键字，可以保留编号或者字段名。</description>
+    </item>
+    
+    <item>
+      <title>Protobuf原理</title>
+      <link>http://yici.xin/post/tech/protobuf%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Tue, 27 Dec 2022 17:52:06 +0800</pubDate>
+      
+      <guid>http://yici.xin/post/tech/protobuf%E5%8E%9F%E7%90%86/</guid>
+      <description>protobuf 介绍 ProtoBuf(Protocol Buffers)是一种具有跨平台、语言无关、可扩展等特性的序列化结构数据的方法，可用于网络数据交换及存储。和我们平时使用的 json、xml 是同一种东西。它在解析性能和数据压缩后大小方面比 json、xml 更优秀，目前常用于 rpc。
+protobuf 序列化机制 不同于传统的序列化方式，protobuf 在序列化数据之前，需要先定义一个结构体，它是记录数据在序列化和解析时的参照，我们简单看看它的语法：
+message Person { required int32 id = 1; required string name = 2; required string hobby = 3; } 在该结构体的字段定义中，有几个关键位置，分别是类型(如 int32)、字段名(如 name)，以及一个编号(如 1、2、3)，
+使用 protobuf 的双方都需要依照这个结构体定义来进行序列化和解析。
+我们通过几个问题来了解其序列化机制吧：
+QUESTION1 🙋‍♂️
+在解析序列化数据时，怎么确定当前解析的数据对应哪个字段？ 在传统的序列化机制中，序列化数据与其对应的字段，都会通过字段名进行联系，但在 protobuf 的序列化结果中，是没有id、name和hobby这样的字段名的，它们会被编号替代。
+QUESTION2 🙋‍♂️
+序列化后的字节流，如何分隔各个字段？ 我们都知道，数据最终在传输的过程中，是以一个个字节的二进制形式传输的，面对一长串的字节流，如何确定每个字段的字节流段呢？ 在每个字段的字节流最前面，会有几个特殊字节，称为 Tag，Tag 就充当了边界的作用，分隔各个字段。
+如下图，我们可以把字节流看成一个个由 Tag 和数据(value)组成的结构。
+Tag 不仅仅只是起到了分隔字段的作用，它还承载了类型信息，我们来看看 Tag 是如何生成的:
+static int makeTag(final int fieldNumber, final int wireType) { return (filedNumber &amp;lt;&amp;lt; 3) | wireType; } 其中的fieldNumber，就是我们定义结构体时给的编号，wireType有以下几个值：</description>
+    </item>
+    
+  </channel>
+</rss>

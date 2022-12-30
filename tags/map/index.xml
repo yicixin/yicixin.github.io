@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>map on yicixin&#39;s blog</title>
+    <link>http://yici.xin/tags/map/</link>
+    <description>Recent content in map on yicixin&#39;s blog</description>
+    <image>
+      <url>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 30 Dec 2022 10:49:41 +0800</lastBuildDate><atom:link href="http://yici.xin/tags/map/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang-map的操作</title>
+      <link>http://yici.xin/post/tech/golang-map%E7%9A%84%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Fri, 30 Dec 2022 10:49:41 +0800</pubDate>
+      
+      <guid>http://yici.xin/post/tech/golang-map%E7%9A%84%E6%93%8D%E4%BD%9C/</guid>
+      <description>创建 map 创建 map 的语法很简单
+// 不指定map长度 ageMp := make(map[string]int) // 指定map长度 ageMp := make(map[string]int, 8) // ageMp 为 nil，不能向其添加元素，会直接panic var ageMp map[string]int 通过汇编语言，我们能够跟踪到 map 的创建最终会调用 runtime.makemap 方法
+// makemap implements Go map creation for make(map[k]v, hint). // If the compiler has determined that the map or the first bucket // can be created on the stack, h and/or bucket may be non-nil. // If h != nil, the map can be created directly in h.</description>
+    </item>
+    
+    <item>
+      <title>golang-map介绍</title>
+      <link>http://yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Wed, 05 Jan 2022 23:38:06 +0800</pubDate>
+      
+      <guid>http://yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</guid>
+      <description>本文中使用的 go 版本：
+go version go1.17.2 darwin/amd64
+内容概述 本文介绍 golang 中经常用到的结构-map，简称哈希表、字典。介绍其结构及设计思路。
+map 在源码中的结构——hmap Go 语言采用的核心数据结构是哈希查找表，使用链表解决哈希冲突。
+在源码中$GOROOT/src/runtime/map.go，map 的核心结构体是这样的：
+// A header for a Go map. type hmap struct { count int // map中的元素数量，即len(map)时的返回值 flags uint8 B uint8 // buckets的以2为底的对数, 即2^B=buckets noverflow uint16 // 溢出桶的近似数; see incrnoverflow for details hash0 uint32 // 哈希种子 buckets unsafe.Pointer // 2^B个bucket的数组，may be nil if count==0. oldbuckets unsafe.Pointer // 哈希在扩容时用于保存之前 buckets 的字段，它的大小是当前 buckets 的一半； nevacuate uintptr // progress counter for evacuation (buckets less than this have been evacuated) extra *mapextra // optional fields } 在上面我们需要关注的核心是buckets，它是一个指针，最终指向了bmap结构体数组</description>
+    </item>
+    
+  </channel>
+</rss>

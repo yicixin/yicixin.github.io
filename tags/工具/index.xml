@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>工具 on yicixin&#39;s blog</title>
+    <link>http://yici.xin/tags/%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 工具 on yicixin&#39;s blog</description>
+    <image>
+      <url>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 27 Dec 2022 18:18:12 +0800</lastBuildDate><atom:link href="http://yici.xin/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pprof使用</title>
+      <link>http://yici.xin/post/tech/pprof%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 27 Dec 2022 18:18:12 +0800</pubDate>
+      
+      <guid>http://yici.xin/post/tech/pprof%E4%BD%BF%E7%94%A8/</guid>
+      <description>项目地址:
+https://github.com/google/pprof
+安装:
+go install github.com/google/pprof@latest 什么是profile? A Profile is a collection of stack traces showing the call sequences that led to instances of a particular event, such as allocation. Packages can create and maintain their own profiles; the most common use is for tracking resources that must be explicitly closed, such as files or network connections.
+Each Profile has a unique name. A few profiles are predefined:
+goroutine - stack traces of all current goroutines heap - a sampling of all heap allocations threadcreate - stack traces that led to the creation of new OS threads block - stack traces that led to blocking on synchronization primitives mutex - stack traces of holders of contended mutexes There are 7 places you can get profiles in the default webserver: the ones mentioned above</description>
+    </item>
+    
+  </channel>
+</rss>
