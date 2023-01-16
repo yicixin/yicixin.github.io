@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.yici.xin/post/tech/</loc>
-    <lastmod>2022-12-30T10:51:52+08:00</lastmod>
+    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/</loc>
+    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/rust/</loc>
+    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/tech/rust%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/</loc>
+    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/</loc>
+    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/assembly/</loc>
     <lastmod>2022-12-30T10:51:52+08:00</lastmod>
@@ -15,15 +30,6 @@
     <lastmod>2022-12-30T10:51:52+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/plan9/</loc>
-    <lastmod>2022-12-30T10:51:52+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/post/</loc>
-    <lastmod>2022-12-30T10:51:52+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/</loc>
-    <lastmod>2022-12-30T10:51:52+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/tags/</loc>
     <lastmod>2022-12-30T10:51:52+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/tech/golang-map%E7%9A%84%E6%93%8D%E4%BD%9C/</loc>
@@ -39,9 +45,6 @@
     <lastmod>2022-12-30T10:49:41+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/read/</loc>
-    <lastmod>2022-12-29T15:41:07+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/tags/rust/</loc>
     <lastmod>2022-12-29T15:41:07+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/read/rust-option%E6%9E%9A%E4%B8%BE/</loc>
