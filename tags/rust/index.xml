@@ -10,7 +10,20 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 16 Jan 2023 10:02:41 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Jan 2023 14:16:44 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust——泛型和trait</title>
+      <link>https://www.yici.xin/post/tech/rust%E6%B3%9B%E5%9E%8B%E5%92%8Ctrait/</link>
+      <pubDate>Wed, 18 Jan 2023 14:16:44 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/post/tech/rust%E6%B3%9B%E5%9E%8B%E5%92%8Ctrait/</guid>
+      <description>泛型 函数签名中使用泛型 尝试编写一个寻找数组中最大值的函数:
+fn largest_i32(list: &amp;amp;[i32]) -&amp;gt; &amp;amp;i32 { let mut largest = &amp;amp;list[0]; for item in list.iter() { if item &amp;gt; largest { largest = item; } } largest } 该函数仅支持i32类型，如果我们需要一个char类型的largest_char函数，应该会是这样:
+fn largest_char(list: &amp;amp;[char]) -&amp;gt; &amp;amp;char { let mut largest = &amp;amp;list[0]; for item in list.iter() { if item &amp;gt; largest { largest = item; } } largest } 可以发现，我们在编写一些逻辑重复，仅类型不同的代码，为了能够支持更多的类型而不需要手写它们的largest函数，可以将这部分代码中的类型使用泛型替换。
+所以泛型版本应该是这么写的:
+fn largest_t&amp;lt;T&amp;gt;(list: &amp;amp;[T]) -&amp;gt; &amp;amp;T { let mut largest = &amp;amp;list[0]; for item in list.</description>
+    </item>
+    
     <item>
       <title>Rust错误处理</title>
       <link>https://www.yici.xin/post/tech/rust%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</link>

@@ -3,21 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.yici.xin/post/tech/</loc>
-    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/</loc>
-    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/rust/</loc>
-    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
   </url><url>
-    <loc>https://www.yici.xin/post/tech/rust%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+    <loc>https://www.yici.xin/post/tech/rust%E6%B3%9B%E5%9E%8B%E5%92%8Ctrait/</loc>
+    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/trait/</loc>
+    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/</loc>
-    <lastmod>2023-01-16T10:02:41+08:00</lastmod>
+    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/</loc>
+    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/%E6%B3%9B%E5%9E%8B/</loc>
+    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/tech/rust%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/</loc>
     <lastmod>2023-01-16T10:02:41+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/assembly/</loc>
