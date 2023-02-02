@@ -16,9 +16,9 @@ package main func main() { s := &#34;Hello, world!&#34; // string转byte数组 b
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
 </span></span><span style=display:flex><span>	<span style=color:#a6e22e>s</span> <span style=color:#f92672>:=</span> <span style=color:#e6db74>&#34;Hello, world!&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// string转byte数组
+</span></span><span style=display:flex><span>  	<span style=color:#75715e>// string转byte数组
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>b</span> <span style=color:#f92672>:=</span> []byte(<span style=color:#a6e22e>s</span>)
-</span></span><span style=display:flex><span>  <span style=color:#75715e>// byte数组转string
+</span></span><span style=display:flex><span>  	<span style=color:#75715e>// byte数组转string
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>s2</span> <span style=color:#f92672>:=</span> string(<span style=color:#a6e22e>b</span>)
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>该转换语句会被go编译器翻译为runtime层的方法调用，其中<code>[]byte</code>到<code>string</code>的转换对应<code>/src/runtime/string.go:81</code>处的<code>slicebytetostring</code>函数；而<code>string</code>到<code>[]byte</code>的转换对应的则是<code>/src/runtime/string.go:172</code>处的<code>stringtoslicebyte</code>函数。</p><p>先来看看比较简单的<code>stringtoslicebyte</code>函数，<code>tmpBuf</code>类型是个大小为32的<code>byte</code>数组。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#75715e>// The constant is known to the compiler.
