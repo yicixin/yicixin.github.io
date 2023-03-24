@@ -71,6 +71,17 @@ runtime·check 运行时类型检查，主要是校验编译器的翻译工作�
     </item>
     
     <item>
+      <title>Golang内存回收</title>
+      <link>https://www.yici.xin/post/tech/golang%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</link>
+      <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/post/tech/golang%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</guid>
+      <description>GC源码分布: 流程 文件 标记准备 runtime/mgc.go 调步策略 runtime/mgcpacer.go 并发标记 runtime/mgcmark.go 清扫流程 runtime/msweep.go 位图标识 runtime/mbitmap.go 触发屏障 runtime/mbwbuf.go 内存回收 runtime/mgcscavenge.go GC触发链路: 触发 GC 的事件类型可以分为如下三种：
+类型 触发事件 校验条件 gcTriggerHeap 分配对象时触发 堆已分配内存达到阈值 gcTriggerTime 由 forcegchelper 守护协程定时触发 每2分钟触发一次 gcTriggerCycle 用户调用 runtime.GC 方法 上一轮 GC 已结束 触发类型的源码:
+type gcTriggerKind int const ( // 堆触发 gcTriggerHeap gcTriggerKind = iota // 定时触发 gcTriggerTime // 手动触发 gcTriggerCycle ) // 进行触发条件的校验 func (t gcTrigger) test() bool { if !memstats.enablegc || panicking.Load() !</description>
+    </item>
+    
+    <item>
       <title>Golang互斥锁-Mutex</title>
       <link>https://www.yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/</link>
       <pubDate>Tue, 27 Dec 2022 18:22:59 +0800</pubDate>

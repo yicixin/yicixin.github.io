@@ -3,21 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.yici.xin/post/tech/</loc>
-    <lastmod>2023-02-01T19:34:04+08:00</lastmod>
+    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/tech/http2.0%E5%92%8C3.0/</loc>
+    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/http%E5%8D%8F%E8%AE%AE/</loc>
+    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/</loc>
+    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/udp/</loc>
+    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/</loc>
+    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/</loc>
+    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/golang/</loc>
     <lastmod>2023-02-01T19:34:04+08:00</lastmod>
   </url><url>
-    <loc>https://www.yici.xin/post/</loc>
-    <lastmod>2023-02-01T19:34:04+08:00</lastmod>
-  </url><url>
     <loc>https://www.yici.xin/tags/string/</loc>
-    <lastmod>2023-02-01T19:34:04+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/</loc>
-    <lastmod>2023-02-01T19:34:04+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/tags/</loc>
     <lastmod>2023-02-01T19:34:04+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/tech/%E8%BD%AC%E6%8D%A2bytes%E5%92%8Cstring%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
@@ -83,7 +92,16 @@
     <loc>https://www.yici.xin/post/tech/keynote%E4%B8%AD%E8%B4%B4%E4%BB%A3%E7%A0%81/</loc>
     <lastmod>2022-12-27T18:30:01+08:00</lastmod>
   </url><url>
+    <loc>https://www.yici.xin/tags/gc/</loc>
+    <lastmod>2022-12-27T18:26:23+08:00</lastmod>
+  </url><url>
     <loc>https://www.yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</loc>
+    <lastmod>2022-12-27T18:26:23+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/tech/golang%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</loc>
+    <lastmod>2022-12-27T18:26:23+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</loc>
     <lastmod>2022-12-27T18:26:23+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/%E9%94%81/</loc>

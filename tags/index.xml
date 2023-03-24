@@ -10,7 +10,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 01 Feb 2023 19:34:04 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Mar 2023 22:40:52 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>http协议</title>
+      <link>https://www.yici.xin/tags/http%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Fri, 24 Mar 2023 22:40:52 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/http%E5%8D%8F%E8%AE%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UDP</title>
+      <link>https://www.yici.xin/tags/udp/</link>
+      <pubDate>Fri, 24 Mar 2023 22:40:52 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/udp/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>golang</title>
       <link>https://www.yici.xin/tags/golang/</link>
@@ -125,6 +143,24 @@
       <pubDate>Tue, 27 Dec 2022 18:30:01 +0800</pubDate>
       
       <guid>https://www.yici.xin/tags/%E6%8A%80%E5%B7%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GC</title>
+      <link>https://www.yici.xin/tags/gc/</link>
+      <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/gc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>内存回收</title>
+      <link>https://www.yici.xin/tags/%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</link>
+      <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</guid>
       <description></description>
     </item>
     
