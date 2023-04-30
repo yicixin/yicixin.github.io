@@ -10,7 +10,23 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 18 Jan 2023 14:16:44 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Apr 2023 12:10:47 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust编译过程</title>
+      <link>https://www.yici.xin/post/tech/rust%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Sat, 29 Apr 2023 12:10:47 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/post/tech/rust%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/</guid>
+      <description>Rust 编译 rust源码首先经过词法分析变成一个个Token，再经过语法分析变为抽象语法树AST，之后rust并没有直接进行机器码的生成，而是将AST降级为高级中间语言HIR，HIR被用于rust编译器对代码进行类型检查、方法查找等工作；接着HIR再次降级为中级中间语言MIR，MIR用于借用检测、代码生成(宏、泛型)，最终MIR转化为LLVM中间语言，再转化为机器码。
+词法结构 关键字-keywords 严格关键字Strict：
+as/ break/ const/ continue/ crate/ if/ else/ struct/ enum/ true/ false/ fn/ for/ in/ let/ loop/ impl/ mod/ match/ move / mut /pub/ ref/ return/ self/ Self/ static/ super/ trait/ type/ unsafe/ use/ where/ while /async/ await/ dyn / main
+保留字Reserved：
+abstract/ become/ box/ do/ final/ macro/ override/ priv/ typeof/ unsized/ virtual/ yield / try
+保留不代表将来一定会使用
+弱关键字Weak：
+2018 Edition: union, ‘static 2015 Edition: dyn (在2018Editon中已经是严格关键字) 标识符-identifier 标识符由字母、数字和下划线组成，且必须以字母或下划线开头。</description>
+    </item>
+    
     <item>
       <title>Rust——泛型和trait</title>
       <link>https://www.yici.xin/post/tech/rust%E6%B3%9B%E5%9E%8B%E5%92%8Ctrait/</link>

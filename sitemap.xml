@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.yici.xin/post/tech/</loc>
-    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
+    <lastmod>2023-04-29T12:10:47+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/</loc>
+    <lastmod>2023-04-29T12:10:47+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/rust/</loc>
+    <lastmod>2023-04-29T12:10:47+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/tech/rust%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2023-04-29T12:10:47+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/</loc>
+    <lastmod>2023-04-29T12:10:47+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/</loc>
+    <lastmod>2023-04-29T12:10:47+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/tech/http2.0%E5%92%8C3.0/</loc>
     <lastmod>2023-03-24T22:40:52+08:00</lastmod>
@@ -11,16 +26,7 @@
     <loc>https://www.yici.xin/tags/http%E5%8D%8F%E8%AE%AE/</loc>
     <lastmod>2023-03-24T22:40:52+08:00</lastmod>
   </url><url>
-    <loc>https://www.yici.xin/post/</loc>
-    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
-  </url><url>
     <loc>https://www.yici.xin/tags/udp/</loc>
-    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/</loc>
-    <lastmod>2023-03-24T22:40:52+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/tags/</loc>
     <lastmod>2023-03-24T22:40:52+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/golang/</loc>
@@ -31,9 +37,6 @@
   </url><url>
     <loc>https://www.yici.xin/post/tech/%E8%BD%AC%E6%8D%A2bytes%E5%92%8Cstring%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
     <lastmod>2023-02-01T19:34:04+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/tags/rust/</loc>
-    <lastmod>2023-01-18T14:16:44+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/tech/rust%E6%B3%9B%E5%9E%8B%E5%92%8Ctrait/</loc>
     <lastmod>2023-01-18T14:16:44+08:00</lastmod>
@@ -165,6 +168,8 @@
     <lastmod>2022-01-05T23:38:06+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/archives/</loc>
+  </url><url>
+    <loc>https://www.yici.xin/projects/</loc>
   </url><url>
     <loc>https://www.yici.xin/post/life/</loc>
   </url><url>
