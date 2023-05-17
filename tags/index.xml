@@ -10,13 +10,22 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 29 Apr 2023 12:10:47 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 May 2023 21:26:57 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>rust</title>
       <link>https://www.yici.xin/tags/rust/</link>
-      <pubDate>Sat, 29 Apr 2023 12:10:47 +0800</pubDate>
+      <pubDate>Tue, 16 May 2023 21:26:57 +0800</pubDate>
       
       <guid>https://www.yici.xin/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>动态数组</title>
+      <link>https://www.yici.xin/tags/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Tue, 16 May 2023 21:26:57 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</guid>
       <description></description>
     </item>
     
