@@ -219,15 +219,6 @@
     </item>
     
     <item>
-      <title>go</title>
-      <link>https://www.yici.xin/tags/go/</link>
-      <pubDate>Mon, 21 Nov 2022 17:05:22 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>对象池</title>
       <link>https://www.yici.xin/tags/%E5%AF%B9%E8%B1%A1%E6%B1%A0/</link>
       <pubDate>Mon, 21 Nov 2022 17:05:22 +0800</pubDate>
@@ -242,6 +233,15 @@
       <pubDate>Mon, 21 Nov 2022 17:05:22 +0800</pubDate>
       
       <guid>https://www.yici.xin/tags/%E6%BA%90%E7%A0%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>channel</title>
+      <link>https://www.yici.xin/tags/channel/</link>
+      <pubDate>Mon, 21 Nov 2022 09:45:13 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/channel/</guid>
       <description></description>
     </item>
     

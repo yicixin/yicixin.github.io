@@ -279,7 +279,7 @@ fn main() { // 定义x let x = 5; // 再次定义x，此时第一个x被隐藏 l
       
       <guid>https://www.yici.xin/post/tech/go-channel/</guid>
       <description>数据结构 channel 的底层源码和相关实现在/src/runtime/chan.go中。
-type hchan struct { qcount uint // 队列中所有数据总数 dataqsiz uint // 环形队列的 size buf unsafe.Pointer // 指向 dataqsiz 长度的数组 elemsize uint16 // 元素大小 closed uint32 elemtype *_type // 元素类型 sendx uint // 已发送的元素在环形队列中的位置 recvx uint // 已接收的元素在环形队列中的位置 recvq waitq // 接收者的等待队列 sendq waitq // 发送者的等待队列 // lock 锁保护 hchan 中的所有字段，以及此通道上被阻塞的 sudogs 中的多个字段。 // 持有 lock 的时候，禁止更改另一个 G 的状态（特别是不要使 G 状态变成ready）， // 因为这会因为堆栈 shrinking 而发生死锁。 lock mutex } recvq 和 sendq 是等待队列，waitq 是一个双向链表：</description>
+type hchan struct { qcount uint // 队列中所有数据总数 dataqsiz uint // 环形队列的 size buf unsafe.Pointer // 指向 dataqsiz 长度的数组 elemsize uint16 // 元素大小 closed uint32 elemtype *_type // 元素类型 sendx uint // 已发送的元素在环形队列中的位置 recvx uint // 已接收的元素在环形队列中的位置 recvq waitq // 接收者的等待队列 sendq waitq // 发送者的等待队列 // lock 锁保护 hchan 中的所有字段，以及此通道上被阻塞的 sudogs 中的多个字段。 // 持有 lock 的时候，禁止更改另一个 G 的状态（特别是不要使 G 状态变成ready）， // 因为这会因为堆栈 shrinking 而发生死锁。 lock mutex } recvq 和 sendq 是等待队列，waitq 类型是一个双向链表：</description>
     </item>
     
     <item>
@@ -290,7 +290,7 @@ type hchan struct { qcount uint // 队列中所有数据总数 dataqsiz uint // 
       <guid>https://www.yici.xin/post/tech/short_code/</guid>
       <description>Short_code 1. mark高亮 这是一个重点标记 文字居中
 🤓
-这是一条信息 Python Rust Golang print(&amp;#34;hello world&amp;#34;) fn main() { println!(&amp;#34;Hello, world!&amp;#34;); } package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;hello world&amp;#34;) } &lt;!DOCTYPE HTML&gt; &lt;!DOCTYPE HTML&gt; &lt;!DOCTYPE HTML&gt; &lt;!DOCTYPE HTML&gt; </description>
+这是一条信息 Python Rust Golang print(&amp;#34;hello world&amp;#34;) fn main() { println!(&amp;#34;Hello, world!&amp;#34;); } package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;hello world&amp;#34;) } &lt;!DOCTYPE HTML&gt; &lt;!DOCTYPE HTML&gt; </description>
     </item>
     
     <item>
