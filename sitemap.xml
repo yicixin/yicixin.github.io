@@ -3,21 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.yici.xin/post/tech/</loc>
-    <lastmod>2023-05-16T21:26:57+08:00</lastmod>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/</loc>
-    <lastmod>2023-05-16T21:26:57+08:00</lastmod>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/rust/</loc>
-    <lastmod>2023-05-16T21:26:57+08:00</lastmod>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
   </url><url>
-    <loc>https://www.yici.xin/post/tech/rust%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84vector/</loc>
-    <lastmod>2023-05-16T21:26:57+08:00</lastmod>
+    <loc>https://www.yici.xin/post/tech/rust%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%89%B9%E6%80%A7-%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E9%97%AD%E5%8C%85/</loc>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/</loc>
-    <lastmod>2023-05-16T21:26:57+08:00</lastmod>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/</loc>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/%E9%97%AD%E5%8C%85/</loc>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/</loc>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2023-06-06T23:09:15+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/tech/rust%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84vector/</loc>
     <lastmod>2023-05-16T21:26:57+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</loc>
