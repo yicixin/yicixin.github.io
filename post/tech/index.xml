@@ -10,17 +10,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 06 Jun 2023 23:09:15 +0800</lastBuildDate><atom:link href="https://www.yici.xin/post/tech/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Rust函数式编程特性 迭代器和闭包</title>
-      <link>https://www.yici.xin/post/tech/rust%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%89%B9%E6%80%A7-%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E9%97%AD%E5%8C%85/</link>
-      <pubDate>Tue, 06 Jun 2023 23:09:15 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/post/tech/rust%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%89%B9%E6%80%A7-%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E9%97%AD%E5%8C%85/</guid>
-      <description>简介 Rust’s design has taken inspiration from many existing languages and techniques, and one significant influence is functional programming. Programming in a functional style often includes using functions as values by passing them in arguments, returning them from other functions, assigning them to variables for later execution, and so forth.
-In this chapter, we won’t debate the issue of what functional programming is or isn’t but will instead discuss some features of Rust that are similar to features in many languages often referred to as functional.</description>
-    </item>
-    
+    <lastBuildDate>Tue, 16 May 2023 21:26:57 +0800</lastBuildDate><atom:link href="https://www.yici.xin/post/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rust动态数组Vector</title>
       <link>https://www.yici.xin/post/tech/rust%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84vector/</link>
