@@ -106,30 +106,6 @@ MOVB $1, DI // 1 byte MOVW $0x10, BX // 2 bytes MOVD $1, DX // 4 bytes MOVQ $-10
     </item>
     
     <item>
-      <title>Rust Option枚举</title>
-      <link>https://www.yici.xin/post/read/rust-option%E6%9E%9A%E4%B8%BE/</link>
-      <pubDate>Thu, 29 Dec 2022 15:41:07 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/post/read/rust-option%E6%9E%9A%E4%B8%BE/</guid>
-      <description>原文链接🔗
-The Option Enum and Its Advantages Over Null Values 比null更优的选择——Option枚举
-This section explores a case study of Option, which is another enum defined by the standard library. The Option type encodes the very common scenario in which a value could be something or it could be nothing.
-这一节探讨Option的一个学习案例，Option是另一个由标准库定义的枚举。Opiton类型编码了一个非常常见场景，值可以是某值，也可以是空。
-For example, if you request the first of a list containing items, you would get a value. If you request the first item of an empty list, you would get nothing.</description>
-    </item>
-    
-    <item>
-      <title>Rust程序设计——枚举</title>
-      <link>https://www.yici.xin/post/read/rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E6%9E%9A%E4%B8%BE/</link>
-      <pubDate>Wed, 28 Dec 2022 23:09:59 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/post/read/rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E6%9E%9A%E4%B8%BE/</guid>
-      <description>原文链接🔗
-Defining an Enum 定义枚举
-Where structs give you a way of grouping together related fields and data, like a Rectangle with its width and height, enums give you a way of saying a value is one of a possible set of values. For example, we may want to say that Rectangle is one of a set of possible shapes that also includes Circle and Triangle. To do this, Rust allows us to encode these possibilities as an enum.</description>
-    </item>
-    
-    <item>
       <title>Go程序的启动过程</title>
       <link>https://www.yici.xin/post/tech/go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Tue, 27 Dec 2022 18:35:19 +0800</pubDate>
@@ -255,18 +231,6 @@ QUESTION2 🙋‍♂️
 如下图，我们可以把字节流看成一个个由 Tag 和数据(value)组成的结构。
 Tag 不仅仅只是起到了分隔字段的作用，它还承载了类型信息，我们来看看 Tag 是如何生成的:
 static int makeTag(final int fieldNumber, final int wireType) { return (filedNumber &amp;lt;&amp;lt; 3) | wireType; } 其中的fieldNumber，就是我们定义结构体时给的编号，wireType有以下几个值：</description>
-    </item>
-    
-    <item>
-      <title>Rust的所有权系统</title>
-      <link>https://www.yici.xin/post/tech/rust%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E7%B3%BB%E7%BB%9F/</link>
-      <pubDate>Thu, 22 Dec 2022 16:44:27 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/post/tech/rust%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E7%B3%BB%E7%BB%9F/</guid>
-      <description> 所有权（系统）是 Rust 最为与众不同的特性，对语言的其他部分有着深刻含义。它让 Rust 无需垃圾回收（garbage collector）即可保障内存安全，因此理解 Rust 中所有权如何工作是十分重要的。
-you know，程序的运行其实就是一系列的内存操作，如何管理内存是所有编程语言都逃不开的问题，管理内存的手段也是编程语言的核心特性之一。在rust之前，编程语言对内存的管理有这么两个派别： 以C、C++为首的手动管理派，程序员们需要自己亲自申请、分配和释放内存，java、go、C#的自动管理派，一般称这个机制为垃圾回收(GC)，GC会负责内存的申请、分配、追踪和回收，减轻程序员的负担👀。 而rust给出了一条新的路线，通过所有权系统管理内存，编译器在编译时会根据一系列的规则进行检查，违反了任何规则，程序都不能编译。不过你放心，在运行时，所有权系统的任何功能都不会减慢程序。
-所有权规则 在查看后续内容时，请谨记以下规则
-Rust 中的每一个值都有一个 所有者（owner）。 值在任一时刻有且只有一个所有者。 当所有者（变量）离开作用域，这个值将被丢弃。 </description>
     </item>
     
     <item>

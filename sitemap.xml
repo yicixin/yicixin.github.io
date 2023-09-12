@@ -74,18 +74,6 @@
     <loc>https://www.yici.xin/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2022-12-30T10:49:41+08:00</lastmod>
   </url><url>
-    <loc>https://www.yici.xin/post/read/</loc>
-    <lastmod>2022-12-29T15:41:07+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/post/read/rust-option%E6%9E%9A%E4%B8%BE/</loc>
-    <lastmod>2022-12-29T15:41:07+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/tags/%E7%BF%BB%E8%AF%91/</loc>
-    <lastmod>2022-12-29T15:41:07+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/post/read/rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-%E6%9E%9A%E4%B8%BE/</loc>
-    <lastmod>2022-12-28T23:09:59+08:00</lastmod>
-  </url><url>
     <loc>https://www.yici.xin/post/tech/go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</loc>
     <lastmod>2022-12-27T18:35:19+08:00</lastmod>
   </url><url>
@@ -143,9 +131,6 @@
     <loc>https://www.yici.xin/post/tech/protobuf%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2022-12-27T17:52:06+08:00</lastmod>
   </url><url>
-    <loc>https://www.yici.xin/post/tech/rust%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2022-12-22T16:44:27+08:00</lastmod>
-  </url><url>
     <loc>https://www.yici.xin/post/tech/%E4%B8%80%E4%BA%9Brust%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2022-12-21T18:14:01+08:00</lastmod>
   </url><url>
@@ -174,8 +159,8 @@
   </url><url>
     <loc>https://www.yici.xin/projects/</loc>
   </url><url>
-    <loc>https://www.yici.xin/post/life/</loc>
-  </url><url>
     <loc>https://www.yici.xin/categories/</loc>
+  </url><url>
+    <loc>https://www.yici.xin/post/rust/</loc>
   </url>
 </urlset>
