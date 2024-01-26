@@ -19,8 +19,8 @@
       <guid>https://www.yici.xin/post/tech/rust%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84vector/</guid>
       <description>在Rust中，动态数组被称为&amp;quot;Vec&amp;quot;或&amp;quot;Vector&amp;quot;。Vector是一种在堆上分配内存的集合类型，允许你存储多个值。它的大小是动态的，可以根据需要进行增减。
 创建Vector 创建rust动态数组有好几种方式
-```rust let v: Vec = Vec::new(); ``` ```rust let v: Vec = Vec::with_capacity(capacity) ``` ```rust let v = vec![1, 2, 3]; ``` 读取元素 Vec读取指定位置的元素有两种方式
-使用下标 使用get ```rust fn main() { let v = vec![1, 2, 3, 4, 5]; let third: &amp;i32 = &amp;v[2]; println!(&#34;第三个元素是 {}&#34;, third); } ``` ```rust fn main() { let v = vec![1, 2, 3, 4, 5]; match v.get(2) { Some(third) =&gt; println!(&#34;第三个元素是 {third}&#34;), None =&gt; println!</description>
+New 预先设置容量 vec!宏 let v: Vec&amp;lt;i32&amp;gt; = Vec::new(); let v: Vec&amp;lt;i32&amp;gt; = Vec::with_capacity(capacity) let v = vec![1, 2, 3]; 读取元素 Vec读取指定位置的元素有两种方式
+使用下标 使用get 下标索引 get fn main() { let v = vec![1, 2, 3, 4, 5]; let third: &amp;amp;i32 = &amp;amp;v[2]; println!(&amp;#34;第三个元素是 {}&amp;#34;, third); } fn main() { let v = vec![1, 2, 3, 4, 5]; match v.get(2) { Some(third) =&amp;gt; println!(&amp;#34;第三个元素是 {third}&amp;#34;), None =&amp;gt; println!(&amp;#34;去你的第三个元素，根本没有！&amp;#34;), } } 和其它语言一样，集合类型的索引下标都是从 0 开始，&amp;amp;v[2] 表示借用 v 中的第三个元素，最终会获得该元素的引用。而 v.</description>
     </item>
     
   </channel>
