@@ -274,7 +274,10 @@ type hchan struct { qcount uint // 队列中所有数据总数 dataqsiz uint // 
       <guid>https://www.yici.xin/post/tech/short_code/</guid>
       <description>Short_code 1. mark高亮 这是一个重点标记 文字居中
 🤓
-这是一条信息 &lt;!DOCTYPE HTML&gt; &lt;!DOCTYPE HTML&gt; json XML properties { &amp;#34;Hello&amp;#34;: &amp;#34;World&amp;#34; } &amp;lt;Hello&amp;gt;World&amp;lt;/Hello&amp;gt; Hello = World </description>
+这是一条信息 &lt;!DOCTYPE HTML&gt; &lt;!DOCTYPE HTML&gt; MacOS Linux Windows MacOS This is tab MacOS content.
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa protulit, sed sed aere valvis inhaesuro Pallas animam: qui quid, ignes. Miseratus fonte Ditis conubia.
+Linux This is tab Linux content.
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description>
     </item>
     
     <item>
