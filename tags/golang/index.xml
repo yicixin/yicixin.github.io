@@ -49,19 +49,6 @@ MOVB $1, DI // 1 byte MOVW $0x10, BX // 2 bytes MOVD $1, DX // 4 bytes MOVQ $-10
     </item>
     
     <item>
-      <title>Go程序的启动过程</title>
-      <link>https://www.yici.xin/post/tech/go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</link>
-      <pubDate>Tue, 27 Dec 2022 18:35:19 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/post/tech/go%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</guid>
-      <description>我们知道go的一个优点是支持多个平台，这一特性的背后是对各种不同平台硬件指令的兼容，在go程序启动流程的第一步，就需要区分不同的硬件平台。
-我目前使用的电脑是苹果的m1芯片mbp，该芯片使用的是arm架构，操作系统底层是darwin，对应的启动汇编文件是：runtime/rt0_darwin_arm64.s。
-作个对比，我这里也放上amd64的启动汇编。
-可以看到它们最终都调用了runtime的rt0_go方法，arm架构在runtime/asm_arm64.s，amd在runtime/asm_amd64.s，rt0_go不同平台实现不完全一致，但大同小异，我们挑出其中有价值的部分：
-runtime·check 运行时类型检查，主要是校验编译器的翻译工作是否正确。 runtime·args 系统参数传递，主要是将系统参数转换传递给程序使用。 runtime·osinit 系统基本参数设置，主要是获取 CPU 核心数和内存物理页大小。 runtime·schedinit 进行各种运行时组件的初始化，包含调度器、内存分配器、堆、栈、GC 等一大堆初始化工作。会进行 p 的初始化，并将 m0 和某一个 p 进行绑定。 runtime·mainPC 主要工作是运行 main goroutine，虽然在runtime·rt0_go中指向的是$runtime·mainPC，但实质指向的是 runtime.main runtime·newproc 创建一个新的 goroutine，且绑定 runtime.main方法（也就是应用程序中的入口 main 方法）。并将其放入 m0 绑定的p的本地队列中去，以便后续调度。 runtime·mstart 启动 m，调度器开始进行循环调度。 </description>
-    </item>
-    
-    <item>
       <title>Golang读写锁</title>
       <link>https://www.yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</link>
       <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
