@@ -10,7 +10,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 16 May 2023 21:26:57 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Feb 2024 09:43:27 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>database</title>
+      <link>https://www.yici.xin/tags/database/</link>
+      <pubDate>Mon, 05 Feb 2024 09:43:27 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://www.yici.xin/tags/golang/</link>
+      <pubDate>Mon, 05 Feb 2024 09:43:27 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/golang/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>rust</title>
       <link>https://www.yici.xin/tags/rust/</link>
@@ -44,15 +62,6 @@
       <pubDate>Fri, 24 Mar 2023 22:40:52 +0800</pubDate>
       
       <guid>https://www.yici.xin/tags/quic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://www.yici.xin/tags/golang/</link>
-      <pubDate>Wed, 01 Feb 2023 19:34:04 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/golang/</guid>
       <description></description>
     </item>
     

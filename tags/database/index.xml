@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>database on yicixin&#39;s blog</title>
+    <link>https://www.yici.xin/tags/database/</link>
+    <description>Recent content in database on yicixin&#39;s blog</description>
+    <image>
+      <url>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 05 Feb 2024 09:43:27 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang Sql源码解析</title>
+      <link>https://www.yici.xin/post/tech/golang-sql%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Mon, 05 Feb 2024 09:43:27 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/post/tech/golang-sql%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</guid>
+      <description>环境信息：go1.21.5 amd64
+抽象定义 database/sql库是go标准库的一部分，它本身不提供数据库驱动，而是定义了一套轻量级的接口来与SQL或类SQL的数据库进行交互，由如下核心接口组成：
+&lt;!DOCTYPE HTML&gt; Connector Connector是连接器的抽象，用于获取连接
+// /src/database/sql/driver/driver.go:121 // 一个Connector代表一个固定配置的驱动，能够创建任意数量的、等价的连接给多个协程使用 // // Connector可以传递给sql.OpenDB函数，让每种数据库实现各自的*sql.DB // // 如果Connector实现了io.Closer，会在sql.DB的Close方法最后调用Close() type Connector interface { // Connect 返回一个数据库连接 // sql库有空闲连接池机制，用于连接重用 // // context仅用于拨号目的（见 net.DialContext），不应存储或用于其他目的。 // 一个默认的超时时间是必要的，因为连接池可能会异步调用Connect方法来处理查询 // // 返回的连接同一时刻只能给一个goroutine使用 Connect(context.Context) (Conn, error) // Driver方法返回Connector的底层Driver，主要是为了与sql.DB上的Driver方法保持兼容。 Driver() Driver } Driver 驱动 // Driver是数据库驱动程序必须实现的接口。 // 数据库驱动程序可以实现DriverContext来访问上下文，并且只需对连接池中的连接解析一次名称，而不是每个连接都解析一次。 // /src/database/sql/driver/driver.go:84 type Driver interface { // Open 返回一个新的数据库连接 // 该名称是一个特定驱动程序格式的字符串。如username:passpord@(ip:port)/database Open(name string) (Conn, error) } Conn 连接 Conn是连接的抽象</description>
+    </item>
+    
+  </channel>
+</rss>
