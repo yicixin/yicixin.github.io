@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.yici.xin/post/financial/</loc>
+    <lastmod>2024-02-11T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/</loc>
+    <lastmod>2024-02-11T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/</loc>
+    <lastmod>2024-02-11T17:37:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.yici.xin/post/financial/%E8%82%A1%E7%A5%A8%E5%9F%BA%E7%A1%80%E4%B8%80/</loc>
+    <lastmod>2024-02-11T17:37:00+08:00</lastmod>
+  </url><url>
     <loc>https://www.yici.xin/post/tech/</loc>
     <lastmod>2024-02-05T09:43:27+08:00</lastmod>
   </url><url>
@@ -12,12 +24,6 @@
     <lastmod>2024-02-05T09:43:27+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/post/tech/golang-sql%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2024-02-05T09:43:27+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/post/</loc>
-    <lastmod>2024-02-05T09:43:27+08:00</lastmod>
-  </url><url>
-    <loc>https://www.yici.xin/</loc>
     <lastmod>2024-02-05T09:43:27+08:00</lastmod>
   </url><url>
     <loc>https://www.yici.xin/tags/</loc>
