@@ -10,9 +10,18 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 05 Feb 2024 09:43:27 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Feb 2024 00:28:31 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>database</title>
+      <title>图形学</title>
+      <link>https://www.yici.xin/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</link>
+      <pubDate>Thu, 22 Feb 2024 00:28:31 +0800</pubDate>
+      
+      <guid>https://www.yici.xin/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Database</title>
       <link>https://www.yici.xin/tags/database/</link>
       <pubDate>Mon, 05 Feb 2024 09:43:27 +0800</pubDate>
       
@@ -21,7 +30,7 @@
     </item>
     
     <item>
-      <title>golang</title>
+      <title>Golang</title>
       <link>https://www.yici.xin/tags/golang/</link>
       <pubDate>Mon, 05 Feb 2024 09:43:27 +0800</pubDate>
       
@@ -30,7 +39,7 @@
     </item>
     
     <item>
-      <title>rust</title>
+      <title>Rust</title>
       <link>https://www.yici.xin/tags/rust/</link>
       <pubDate>Tue, 16 May 2023 21:26:57 +0800</pubDate>
       
@@ -66,7 +75,7 @@
     </item>
     
     <item>
-      <title>string</title>
+      <title>String</title>
       <link>https://www.yici.xin/tags/string/</link>
       <pubDate>Wed, 01 Feb 2023 19:34:04 +0800</pubDate>
       
@@ -75,7 +84,7 @@
     </item>
     
     <item>
-      <title>trait</title>
+      <title>Trait</title>
       <link>https://www.yici.xin/tags/trait/</link>
       <pubDate>Wed, 18 Jan 2023 14:16:44 +0800</pubDate>
       
@@ -93,7 +102,7 @@
     </item>
     
     <item>
-      <title>assembly</title>
+      <title>Assembly</title>
       <link>https://www.yici.xin/tags/assembly/</link>
       <pubDate>Fri, 30 Dec 2022 10:51:52 +0800</pubDate>
       
@@ -102,7 +111,7 @@
     </item>
     
     <item>
-      <title>plan9</title>
+      <title>Plan9</title>
       <link>https://www.yici.xin/tags/plan9/</link>
       <pubDate>Fri, 30 Dec 2022 10:51:52 +0800</pubDate>
       
@@ -111,7 +120,7 @@
     </item>
     
     <item>
-      <title>hashmap</title>
+      <title>Hashmap</title>
       <link>https://www.yici.xin/tags/hashmap/</link>
       <pubDate>Fri, 30 Dec 2022 10:49:41 +0800</pubDate>
       
@@ -120,7 +129,7 @@
     </item>
     
     <item>
-      <title>map</title>
+      <title>Map</title>
       <link>https://www.yici.xin/tags/map/</link>
       <pubDate>Fri, 30 Dec 2022 10:49:41 +0800</pubDate>
       
@@ -138,7 +147,7 @@
     </item>
     
     <item>
-      <title>keynote</title>
+      <title>Keynote</title>
       <link>https://www.yici.xin/tags/keynote/</link>
       <pubDate>Tue, 27 Dec 2022 18:30:01 +0800</pubDate>
       
@@ -183,7 +192,7 @@
     </item>
     
     <item>
-      <title>pprof</title>
+      <title>Pprof</title>
       <link>https://www.yici.xin/tags/pprof/</link>
       <pubDate>Tue, 27 Dec 2022 18:18:12 +0800</pubDate>
       
@@ -201,7 +210,7 @@
     </item>
     
     <item>
-      <title>wire</title>
+      <title>Wire</title>
       <link>https://www.yici.xin/tags/wire/</link>
       <pubDate>Tue, 27 Dec 2022 18:09:30 +0800</pubDate>
       
@@ -219,7 +228,7 @@
     </item>
     
     <item>
-      <title>protobuf</title>
+      <title>Protobuf</title>
       <link>https://www.yici.xin/tags/protobuf/</link>
       <pubDate>Tue, 27 Dec 2022 18:02:40 +0800</pubDate>
       
@@ -246,7 +255,7 @@
     </item>
     
     <item>
-      <title>channel</title>
+      <title>Channel</title>
       <link>https://www.yici.xin/tags/channel/</link>
       <pubDate>Mon, 21 Nov 2022 09:45:13 +0800</pubDate>
       
