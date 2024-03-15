@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>yicixin&#39;s blog</title>
+    <title>绝知</title>
     <link>https://www.yici.xin/</link>
-    <description>Recent content on yicixin&#39;s blog</description>
+    <description>Recent content on 绝知</description>
     <image>
       <url>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://www.yici.xin/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 22 Feb 2024 00:28:31 +0800</lastBuildDate><atom:link href="https://www.yici.xin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Mar 2024 23:32:45 +0800</lastBuildDate><atom:link href="https://www.yici.xin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>光栅化直线绘制算法</title>
       <link>https://www.yici.xin/post/tech/%E5%85%89%E6%A0%85%E5%8C%96%E7%9B%B4%E7%BA%BF%E7%BB%98%E5%88%B6%E7%AE%97%E6%B3%95/</link>
@@ -27,15 +27,6 @@ DDA算法 基本原理 DDA(Digital Differential analyzer)，即数值微分法�
 直线用斜截式表示为 $$ y = kx+b $$ 其中的斜率k为$k=\dfrac {∆x} {∆y}= \dfrac {y_1-y_0} {x_1-x_0}$
 第一个八分象限内的DDA算法 通用的DDA算法 不足之处 Bresenham算法 介绍两种理解方式，其原理是一样的，但推导方式略有不同
 基本原理——形式一 基本原理——形式二 中点算法 </description>
-    </item>
-    
-    <item>
-      <title>股票基础一</title>
-      <link>https://www.yici.xin/post/financial/%E8%82%A1%E7%A5%A8%E5%9F%BA%E7%A1%80%E4%B8%80/</link>
-      <pubDate>Sun, 11 Feb 2024 17:37:00 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/post/financial/%E8%82%A1%E7%A5%A8%E5%9F%BA%E7%A1%80%E4%B8%80/</guid>
-      <description></description>
     </item>
     
     <item>
