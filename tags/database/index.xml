@@ -17,10 +17,72 @@
       <pubDate>Mon, 05 Feb 2024 09:43:27 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/golang-sql%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</guid>
-      <description>环境信息：go1.21.5 amd64
-抽象定义 database/sql库是go标准库的一部分，它本身不提供数据库驱动，而是定义了一套轻量级的接口来与SQL或类SQL的数据库进行交互，由如下核心接口组成：
-&lt;!DOCTYPE HTML&gt; Connector Connector是连接器的抽象，用于获取连接
-// /src/database/sql/driver/driver.go:121 // 一个Connector代表一个固定配置的驱动，能够创建任意数量的、等价的连接给多个协程使用 // // Connector可以传递给sql.OpenDB函数，让每种数据库实现各自的*sql.DB // // 如果Connector实现了io.Closer，会在sql.DB的Close方法最后调用Close() type Connector interface { // Connect 返回一个数据库连接 // sql库有空闲连接池机制，用于连接重用 // // context仅用于拨号目的（见 net.DialContext），不应存储或用于其他目的。 // 一个默认的超时时间是必要的，因为连接池可能会异步调用Connect方法来处理查询 // // 返回的连接同一时刻只能给一个goroutine使用 Connect(context.Context) (Conn, error) // Driver方法返回Connector的底层Driver，主要是为了与sql.DB上的Driver方法保持兼容。 Driver() Driver } Driver 驱动 // Driver是数据库驱动程序必须实现的接口。 // 数据库驱动程序可以实现DriverContext来访问上下文，并且只需对连接池中的连接解析一次名称，而不是每个连接都解析一次。 // /src/database/sql/driver/driver.go:84 type Driver interface { // Open 返回一个新的数据库连接 // 该名称是一个特定驱动程序格式的字符串。如username:passpord@(ip:port)/database Open(name string) (Conn, error) } Conn 连接 Conn是连接的抽象</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;环境信息：go1.21.5 amd64&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;抽象定义&#34;&gt;抽象定义&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;database/sql&lt;/code&gt;库是go标准库的一部分，它本身不提供数据库驱动，而是定义了一套轻量级的接口来与SQL或类SQL的数据库进行交互，由如下核心接口组成：&lt;/p&gt;
+&lt;!DOCTYPE HTML&gt;
+&lt;html lang=&#34;en&#34;&gt;
+
+&lt;head&gt;
+    &lt;style type=&#34;text/css&#34;&gt;
+        #chart {
+            padding-bottom: 66%;
+            position: relative;
+            display: block;
+            width: 100%;
+            border-bottom: 5px solid;
+        }
+
+        #chart iframe {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+    &lt;/style&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&#34;chart&#34;&gt;
+        &lt;iframe id=&#34;embed_dom&#34; width=100% height=100%  name=&#34;embed_dom&#34; frameborder=&#34;0&#34; src=&#34;https://www.processon.com/embed/650310e17d9f2e3df554e309&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+&lt;h3 id=&#34;connector&#34;&gt;Connector&lt;/h3&gt;
+&lt;p&gt;Connector是连接器的抽象，用于获取连接。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// /src/database/sql/driver/driver.go:121&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 一个Connector代表一个固定配置的驱动，能够创建任意数量的、等价的连接给多个协程使用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Connector可以传递给sql.OpenDB函数，让每种数据库实现各自的*sql.DB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 如果Connector实现了io.Closer，会在sql.DB的Close方法最后调用Close()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Connector&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// Connect 返回一个数据库连接&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// sql库有空闲连接池机制，用于连接重用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;//&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// context仅用于拨号目的（见 net.DialContext），不应存储或用于其他目的。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 一个默认的超时时间是必要的，因为连接池可能会异步调用Connect方法来处理查询&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;//&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// 返回的连接同一时刻只能给一个goroutine使用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;Connect&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;context&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Context&lt;/span&gt;) (&lt;span style=&#34;color:#a6e22e&#34;&gt;Conn&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;error&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// Driver方法返回Connector的底层Driver，主要是为了与sql.DB上的Driver方法保持兼容。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;Driver&lt;/span&gt;() &lt;span style=&#34;color:#a6e22e&#34;&gt;Driver&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;driver-驱动&#34;&gt;Driver 驱动&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Driver是数据库驱动程序必须实现的接口。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 数据库驱动程序可以实现DriverContext来访问上下文，并且只需对连接池中的连接解析一次名称，而不是每个连接都解析一次。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// /src/database/sql/driver/driver.go:84&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Driver&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// Open 返回一个新的数据库连接&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// 该名称是一个特定驱动程序格式的字符串。如username:passpord@(ip:port)/database&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;Open&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;) (&lt;span style=&#34;color:#a6e22e&#34;&gt;Conn&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;error&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;conn-连接&#34;&gt;Conn 连接&lt;/h3&gt;
+&lt;p&gt;Conn是连接的抽象&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -17,10 +17,110 @@
       <pubDate>Tue, 16 May 2023 21:26:57 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/rust%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84vector/</guid>
-      <description>在Rust中，动态数组被称为&amp;quot;Vec&amp;quot;或&amp;quot;Vector&amp;quot;。Vector是一种在堆上分配内存的集合类型，允许你存储多个值。它的大小是动态的，可以根据需要进行增减。
-创建Vector 创建rust动态数组有好几种方式
-New 预先设置容量 vec!宏 let v: Vec&amp;lt;i32&amp;gt; = Vec::new(); let v: Vec&amp;lt;i32&amp;gt; = Vec::with_capacity(capacity) let v = vec![1, 2, 3]; 读取元素 Vec读取指定位置的元素有两种方式
-使用下标 使用get 下标索引 get fn main() { let v = vec![1, 2, 3, 4, 5]; let third: &amp;amp;i32 = &amp;amp;v[2]; println!(&amp;#34;第三个元素是 {}&amp;#34;, third); } fn main() { let v = vec![1, 2, 3, 4, 5]; match v.get(2) { Some(third) =&amp;gt; println!(&amp;#34;第三个元素是 {third}&amp;#34;), None =&amp;gt; println!(&amp;#34;去你的第三个元素，根本没有！&amp;#34;), } } 和其它语言一样，集合类型的索引下标都是从 0 开始，&amp;amp;v[2] 表示借用 v 中的第三个元素，最终会获得该元素的引用。而 v.</description>
+      <description>&lt;p&gt;在Rust中，动态数组被称为&amp;quot;Vec&amp;quot;或&amp;quot;Vector&amp;quot;。Vector是一种在堆上分配内存的集合类型，允许你存储多个值。它的大小是动态的，可以根据需要进行增减。&lt;/p&gt;
+&lt;h2 id=&#34;创建vector&#34;&gt;创建Vector&lt;/h2&gt;
+&lt;p&gt;创建rust动态数组有好几种方式&lt;/p&gt;
+
+
+&lt;div class=&#34;tab-panel&#34;&gt;
+    &lt;div class=&#34;tab-nav&#34;&gt;
+    
+        &lt;button
+          data-tab-item=&#34;New&#34;
+          data-tab-group=&#34;0.752229194193911&#34;
+          class=&#34;tab-nav-button btn active&#34;
+          onclick=&#34;switchTab(&#39;0.752229194193911&#39;,&#39;New&#39;)&#34;
+         &gt;New&lt;/button&gt;
+    
+        &lt;button
+          data-tab-item=&#34;预先设置容量&#34;
+          data-tab-group=&#34;0.752229194193911&#34;
+          class=&#34;tab-nav-button btn &#34;
+          onclick=&#34;switchTab(&#39;0.752229194193911&#39;,&#39;预先设置容量&#39;)&#34;
+         &gt;预先设置容量&lt;/button&gt;
+    
+        &lt;button
+          data-tab-item=&#34;vec!宏&#34;
+          data-tab-group=&#34;0.752229194193911&#34;
+          class=&#34;tab-nav-button btn &#34;
+          onclick=&#34;switchTab(&#39;0.752229194193911&#39;,&#39;vec!宏&#39;)&#34;
+         &gt;vec!宏&lt;/button&gt;
+    
+    &lt;/div&gt;
+    &lt;div class=&#34;tab-content&#34;&gt;
+        
+        &lt;div data-tab-item=&#34;New&#34; data-tab-group=&#34;0.752229194193911&#34; class=&#34;tab-item active&#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div data-tab-item=&#34;预先设置容量&#34; data-tab-group=&#34;0.752229194193911&#34; class=&#34;tab-item &#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::with_capacity(capacity)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div data-tab-item=&#34;vec!宏&#34; data-tab-group=&#34;0.752229194193911&#34; class=&#34;tab-item &#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;读取元素&#34;&gt;读取元素&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Vec&lt;/code&gt;读取指定位置的元素有两种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用下标&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;get&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;tab-panel&#34;&gt;
+    &lt;div class=&#34;tab-nav&#34;&gt;
+    
+        &lt;button
+          data-tab-item=&#34;下标索引&#34;
+          data-tab-group=&#34;0.8275701150957011&#34;
+          class=&#34;tab-nav-button btn active&#34;
+          onclick=&#34;switchTab(&#39;0.8275701150957011&#39;,&#39;下标索引&#39;)&#34;
+         &gt;下标索引&lt;/button&gt;
+    
+        &lt;button
+          data-tab-item=&#34;get&#34;
+          data-tab-group=&#34;0.8275701150957011&#34;
+          class=&#34;tab-nav-button btn &#34;
+          onclick=&#34;switchTab(&#39;0.8275701150957011&#39;,&#39;get&#39;)&#34;
+         &gt;get&lt;/button&gt;
+    
+    &lt;/div&gt;
+    &lt;div class=&#34;tab-content&#34;&gt;
+        
+        &lt;div data-tab-item=&#34;下标索引&#34; data-tab-group=&#34;0.8275701150957011&#34; class=&#34;tab-item active&#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; third: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;v[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    println!(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;第三个元素是 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, third);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div data-tab-item=&#34;get&#34; data-tab-group=&#34;0.8275701150957011&#34; class=&#34;tab-item &#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;match&lt;/span&gt; v.get(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Some(third) &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; println!(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;第三个元素是 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{third}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        None &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; println!(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;去你的第三个元素，根本没有！&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;和其它语言一样，集合类型的索引下标都是从 &lt;code&gt;0&lt;/code&gt; 开始，&lt;code&gt;&amp;amp;v[2]&lt;/code&gt; 表示借用 &lt;code&gt;v&lt;/code&gt; 中的第三个元素，最终会获得该元素的引用。而 &lt;code&gt;v.get(2)&lt;/code&gt; 也是访问第三个元素，但是有所不同的是，它返回了 &lt;code&gt;Option&amp;lt;&amp;amp;T&amp;gt;&lt;/code&gt;，因此还需要额外的 &lt;code&gt;match&lt;/code&gt; 来匹配解构出具体的值。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -17,9 +17,124 @@
       <pubDate>Fri, 30 Dec 2022 10:49:41 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/golang-map%E7%9A%84%E6%93%8D%E4%BD%9C/</guid>
-      <description>创建 map 创建 map 的语法很简单
-// 不指定map长度 ageMp := make(map[string]int) // 指定map长度 ageMp := make(map[string]int, 8) // ageMp 为 nil，不能向其添加元素，会直接panic var ageMp map[string]int 通过汇编语言，我们能够跟踪到 map 的创建最终会调用 runtime.makemap 方法
-// makemap implements Go map creation for make(map[k]v, hint). // If the compiler has determined that the map or the first bucket // can be created on the stack, h and/or bucket may be non-nil. // If h != nil, the map can be created directly in h.</description>
+      <description>&lt;h3 id=&#34;创建-map&#34;&gt;创建 map&lt;/h3&gt;
+&lt;p&gt;创建 map 的语法很简单&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 不指定map长度&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;ageMp&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; make(&lt;span style=&#34;color:#66d9ef&#34;&gt;map&lt;/span&gt;[&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;]&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 指定map长度&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;ageMp&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; make(&lt;span style=&#34;color:#66d9ef&#34;&gt;map&lt;/span&gt;[&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;]&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// ageMp 为 nil，不能向其添加元素，会直接panic&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ageMp&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;map&lt;/span&gt;[&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;]&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过汇编语言，我们能够跟踪到 map 的创建最终会调用 runtime.makemap 方法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// makemap implements Go map creation for make(map[k]v, hint).&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// If the compiler has determined that the map or the first bucket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// can be created on the stack, h and/or bucket may be non-nil.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// If h != nil, the map can be created directly in h.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// If h.buckets != nil, bucket pointed to can be used as the first bucket.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 翻译：makemap实现了make(map[k]v, hint)这种形式语法的Go map创建。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 如果编译器已经确定该map或者第一个bucket能够在这个栈上创建，那么h和(或)bucket可能为非nil。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 如果h不是nil，那么该map能直接创建在这个h上。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 如果h.buckets不是nil, 则被指向的bucket能被用来做第一个bucket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;makemap&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;maptype&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;hint&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hmap&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;hmap&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 计算指定的大小所需要的内容是否超出出系统允许的最大分配大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;mem&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;overflow&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;math&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;MulUintptr&lt;/span&gt;(uintptr(&lt;span style=&#34;color:#a6e22e&#34;&gt;hint&lt;/span&gt;), &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bucket&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;overflow&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mem&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;maxAlloc&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;hint&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 初始化hmap，并指定随机种子&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt; = new(&lt;span style=&#34;color:#a6e22e&#34;&gt;hmap&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;hash0&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;fastrand&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Find the size parameter B which will hold the requested # of elements.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// For hint &amp;lt; 0 overLoadFactor returns false since hint &amp;lt; bucketCnt.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;// 通过overLoadFactor(hint, B)函数找到一个能装下指定map大小个元素个数的最小B，要满足 装载因子*2^B &amp;lt; hint&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;B&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; uint8(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;overLoadFactor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;hint&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;B&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;B&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;B&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;B&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// allocate initial hash table&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// if B == 0, the buckets field is allocated lazily later (in mapassign)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// If hint is large zeroing this memory could take a while.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;// 开始对hash table进行初始化。如果B==0则buckets 进行懒初始化操作（赋值的时候才进行初始化），如果B值特别大，则初始化需要一段时间，主要通过 makeBucketArray() 函数实现&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;B&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nextOverflow&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bmap&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;nextOverflow&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;makeBucketArray&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;B&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nextOverflow&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;extra&lt;/span&gt; = new(&lt;span style=&#34;color:#a6e22e&#34;&gt;mapextra&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;// 溢出桶地址赋值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;extra&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;nextOverflow&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;nextOverflow&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;h&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// makeBucketArray initializes a backing array for map buckets.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 1&amp;lt;&amp;lt;b is the minimum number of buckets to allocate.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// dirtyalloc should either be nil or a bucket array previously&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// allocated by makeBucketArray with the same t and b parameters.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// If dirtyalloc is nil a new backing array will be alloced and&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// otherwise dirtyalloc will be cleared and reused as backing array.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 翻译：makeBucketArray为map buckets初始化一个备用数组&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 2^b是该buckets长度的最小值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// dirtyalloc之前应该是nil或者bucket数组&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 如果dirtyalloc 为nil，将分配一个新的后备数组，否则将清除dirtyalloc 并作为后备数组重用。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;makeBucketArray&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;maptype&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;uint8&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;dirtyalloc&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;unsafe&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Pointer&lt;/span&gt;) (&lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;unsafe&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Pointer&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;nextOverflow&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bmap&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;base&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;bucketShift&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;// base = 2^b&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;nbuckets&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;base&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// For small b, overflow buckets are unlikely.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Avoid the overhead of the calculation.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 对于小的b，不太可能会需要溢出桶，可以避免这部分计算开销&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 对于b&amp;gt;4（桶的数量&amp;gt; 2^4）的话，则需要创建2^(b-4)个溢出桶。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 加上溢出桶的数量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;nbuckets&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;bucketShift&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 总大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;sz&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bucket&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nbuckets&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 针对所需要的内存大小，mallocgc将分配的内存块大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;up&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;roundupsize&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;sz&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;up&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sz&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;// 如果总大小和mallocgc将分配的内存块大小不同，以mallocgc分配的为准，计算nbuckets&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;nbuckets&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;up&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bucket&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dirtyalloc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;newarray&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bucket&lt;/span&gt;, int(&lt;span style=&#34;color:#a6e22e&#34;&gt;nbuckets&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// dirtyalloc was previously generated by&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// the above newarray(t.bucket, int(nbuckets))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// but may not be empty.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;dirtyalloc&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bucket&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nbuckets&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bucket&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ptrdata&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;memclrHasPointers&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;memclrNoHeapPointers&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;base&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nbuckets&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// We preallocated some overflow buckets.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// To keep the overhead of tracking these overflow buckets to a minimum,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// we use the convention that if a preallocated overflow bucket&amp;#39;s overflow&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// pointer is nil, then there are more available by bumping the pointer.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// We need a safe non-nil pointer for the last overflow bucket; just use buckets.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 我们提前分配了一些溢出桶，为了使得追踪溢出桶的开销最小，我们这样约定:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 如果溢出桶的overflow指针为nil，那么代表还有空间在出现哈希碰撞时使用，&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 溢出桶的最后一个桶的overflow需要指向一个安全的非空指针，这里指向了buckets的第一个桶&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// 具体的用处在map写入时，需要创建溢出桶时会用到，具体在newoverflow函数中&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;nextOverflow&lt;/span&gt; = (&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bmap&lt;/span&gt;)(&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;base&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;uintptr(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bucketsize&lt;/span&gt;))) &lt;span style=&#34;color:#75715e&#34;&gt;// 指向第一个溢出桶&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;last&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bmap&lt;/span&gt;)(&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt;, (&lt;span style=&#34;color:#a6e22e&#34;&gt;nbuckets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;uintptr(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;bucketsize&lt;/span&gt;))) &lt;span style=&#34;color:#75715e&#34;&gt;// 指向最后一个溢出桶&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;last&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setoverflow&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;, (&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bmap&lt;/span&gt;)(&lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt;)) &lt;span style=&#34;color:#75715e&#34;&gt;// 溢出桶的最后一个桶的overflow指向了buckets的第一个桶&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;nextOverflow&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;从上面代码可以得知，2^B 并不等于 buckets 的大小，它只是创建 buckets 时的 base 部分，在该部分后，还有溢出桶。所以正常桶和溢出桶在内存上的分布是连续的，溢出桶的指针记录在了 hmap 的 extra 字段中。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,7 +143,42 @@
       <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/golang%E8%AF%BB%E5%86%99%E9%94%81/</guid>
-      <description>之前写过关于互斥锁的内容， Golang互斥锁-Mutex 日期: 2022-12-27 &amp;nbsp; 标签: #golang&amp;nbsp; #锁&amp;nbsp; #源码解析&amp;nbsp; 互斥锁结构 // A Mutex is a mutual exclusion lock. // The zero value for a Mutex is an unlocked mutex. // // A Mutex must not be copied after first use. type Mutex struct { state int32 sema uint32 } state表示当前互斥锁的状态， sema是用于控制锁状态的信号量 在默认情况下，互斥锁的所有状态位都是 0，int32 中的不同位分别表示了不同的状态： mutexLocked — 表示互斥锁的锁定状态； mutexWoken — 唤醒模式，此时释放锁的g不会唤醒休眠的g； mutexStarving — 当前的互斥锁进入饥饿状态； waitersCount — 当前互斥锁上等待的 Goroutine 个数； 正常模式和饥饿模式的区别: 在正常模式下，锁的等待者会按照先进先出的顺序获取锁。但是刚被唤起的 Goroutine 与新创建的 Goroutine 竞争时，大概率会获取不到锁，为了减少这种情况的出现，一旦 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止部分 Goroutine 被『饿死』。 .</description>
+      <description>&lt;p&gt;之前写过关于互斥锁的内容，
+&lt;div style=&#34;height: 200px;margin: 1em auto;position: relative;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 25%), 0 0 2px rgb(0 0 0 / 25%);
+        border-radius: 15px;padding: 23px;max-width: 780px;background: var(--entry);&#34;&gt;
+    
+    
+    &lt;div style=&#34;font-size: 22px; font-weight: 600&#34;&gt;
+        &lt;a target=&#34;_blank&#34; href=&#34;https://www.yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/&#34; style=&#34;box-shadow: none&#34;&gt;Golang互斥锁-Mutex&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;span style=&#34;font-size: 14px; color: #999&#34;&gt;
+        日期: 2022-12-27
+        &amp;nbsp;
+        标签:
+        
+        #golang&amp;nbsp;
+        
+        #锁&amp;nbsp;
+        
+        #源码解析&amp;nbsp;
+        
+    &lt;/span&gt;
+    &lt;div style=&#34;font-size: 14px; line-height: 1.825;max-height: 75px; overflow: hidden;margin-top: 5px;&#34;&gt;
+        互斥锁结构 // A Mutex is a mutual exclusion lock. // The zero value for a Mutex is an unlocked mutex. // // A Mutex must not be copied after first use. type Mutex struct { state int32 sema uint32 } state表示当前互斥锁的状态， sema是用于控制锁状态的信号量
+在默认情况下，互斥锁的所有状态位都是 0，int32 中的不同位分别表示了不同的状态：
+mutexLocked — 表示互斥锁的锁定状态；
+mutexWoken — 唤醒模式，此时释放锁的g不会唤醒休眠的g；
+mutexStarving — 当前的互斥锁进入饥饿状态；
+waitersCount — 当前互斥锁上等待的 Goroutine 个数；
+正常模式和饥饿模式的区别:
+在正常模式下，锁的等待者会按照先进先出的顺序获取锁。但是刚被唤起的 Goroutine 与新创建的 Goroutine 竞争时，大概率会获取不到锁，为了减少这种情况的出现，一旦 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止部分 Goroutine 被『饿死』。
+ ......
+    &lt;/div&gt;
+    
+    
+&lt;/div&gt;
+互斥锁是最基础的锁，你可以在任何需要锁的场景使用它，但是它不是万能的，在某些特定场景下，我们可以用其他的锁来获得更好的性能，例如读多写少的场景，就更适合读写锁，这也是这篇文章的主题。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,9 +187,185 @@
       <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/golang%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</guid>
-      <description>GC源码分布: 流程 文件 标记准备 runtime/mgc.go 调步策略 runtime/mgcpacer.go 并发标记 runtime/mgcmark.go 清扫流程 runtime/msweep.go 位图标识 runtime/mbitmap.go 触发屏障 runtime/mbwbuf.go 内存回收 runtime/mgcscavenge.go GC触发链路: 触发 GC 的事件类型可以分为如下三种：
-类型 触发事件 校验条件 gcTriggerHeap 分配对象时触发 堆已分配内存达到阈值 gcTriggerTime 由 forcegchelper 守护协程定时触发 每2分钟触发一次 gcTriggerCycle 用户调用 runtime.GC 方法 上一轮 GC 已结束 触发类型的源码:
-type gcTriggerKind int const ( // 堆触发 gcTriggerHeap gcTriggerKind = iota // 定时触发 gcTriggerTime // 手动触发 gcTriggerCycle ) // 进行触发条件的校验 func (t gcTrigger) test() bool { if !memstats.enablegc || panicking.Load() !</description>
+      <description>&lt;h2 id=&#34;gc源码分布&#34;&gt;GC源码分布:&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;流程&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;文件&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;标记准备&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgc.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;调步策略&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgcpacer.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;并发标记&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgcmark.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;清扫流程&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/msweep.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;位图标识&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mbitmap.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;触发屏障&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mbwbuf.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;内存回收&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgcscavenge.go&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;gc触发链路&#34;&gt;GC触发链路:&lt;/h2&gt;
+&lt;p&gt;触发 GC 的事件类型可以分为如下三种：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;类型&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;触发事件&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;校验条件&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcTriggerHeap&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;分配对象时触发&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;堆已分配内存达到阈值&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcTriggerTime&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;由 forcegchelper 守护协程定时触发&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;每2分钟触发一次&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcTriggerCycle&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;用户调用 runtime.GC 方法&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;上一轮 GC 已结束&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;触发类型的源码:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerKind&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 堆触发&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerHeap&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerKind&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;iota&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 定时触发&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerTime&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 手动触发&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerCycle&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 进行触发条件的校验&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTrigger&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;() &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; !&lt;span style=&#34;color:#a6e22e&#34;&gt;memstats&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;enablegc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;panicking&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcphase&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;_GCoff&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;switch&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;kind&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerHeap&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 触发堆大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;trigger&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;_&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcController&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;trigger&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 比较大小是否满足&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcController&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;heapLive&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;trigger&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerTime&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// gcController.gcPercent &amp;lt; 0 表示不进行GC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcController&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;gcPercent&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load&lt;/span&gt;() &amp;lt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 上次gc时间&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;lastgc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; int64(&lt;span style=&#34;color:#a6e22e&#34;&gt;atomic&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load64&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;memstats&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;last_gc_nanotime&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lastgc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;now&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lastgc&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;forcegcperiod&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerCycle&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// t.n &amp;gt; work.cycles, but accounting for wraparound.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; int32(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;work&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;cycles&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load&lt;/span&gt;()) &amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;定时触发gc&#34;&gt;定时触发GC&lt;/h3&gt;
+&lt;!DOCTYPE HTML&gt;
+&lt;html lang=&#34;en&#34;&gt;
+
+&lt;head&gt;
+    &lt;style type=&#34;text/css&#34;&gt;
+        #chart {
+            padding-bottom: 66%;
+            position: relative;
+            display: block;
+            width: 100%;
+            border-bottom: 5px solid;
+        }
+
+        #chart iframe {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+    &lt;/style&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&#34;chart&#34;&gt;
+        &lt;iframe id=&#34;embed_dom&#34; width=100% height=100%  name=&#34;embed_dom&#34; frameborder=&#34;0&#34; src=&#34;https://viewer.diagrams.net/?tags=%7B%7D&amp;amp;highlight=0000ff&amp;amp;edit=_blank&amp;amp;layers=1&amp;amp;nav=1&amp;amp;title=golang-%E5%AE%9A%E6%97%B6gc%E8%A7%A6%E5%8F%91%E8%B7%AF%E5%BE%84.drawio#R7Zhbl5owEMc%2FjY%2FbI0G5vNa19qHtOXvsZX2MMEB2A2NDUOmnb5CwQHHV9qirnj7J%2FDO5zeQ3AXvmKF5PBF1En9EH3iN9f90z73uEGGRgqJ9CyUvFce1SCAXztVMtTNkv0GJfqxnzIW05SkQu2aItepgk4MmWRoXAVdstQN6edUFD6AhTj%2FKu%2BoP5MtK7IHatfwQWRtXMhuWWLTGtnPVO0oj6uGpI5rhnjgSiLJ%2Fi9Qh4EbwqLmW%2FD6%2B0vixMQCIP6XD38O0L%2ByoI2N9n9KfxkE2EdWfqtcm82jD4av%2FaRCEjDDGhfFyr7wVmiQ%2FFqH1l1T6fEBdKNJT4BFLmOpk0k6ikSMZct8KaycfG86wY6t1QW%2FdrPfLGyCsjkSJ%2FbBqNXoVZd9tYVb8AE6kXUoS8tPX2toRQSylmwoMdcauOIhUhyB1%2BpPQrgtqYQCdoAhiDWqxyEMCpZMv2oaP67IYvfnV61YPO8F9kW4%2B7pDzTM7GEyc4RqBNcZGgVMQnTBd3EY6UobyezE2DG%2BQg5is1Ypk%2FBCTylp1LgMzRaLM%2BBeaBaXs3CEoSE9c646VZTQ5dXxUMzt6qRdbUUNWi1%2BqcKtNEJ6o1z9e8okQNRqm6EC2GJdFgKUG009CLgCxA3ABUx9lNl2OfEatCJeehN1cE5cQkbguMPtkXbIXPTso4Tbcu9sBpm%2Fy9hh5aw4YElzLqoCjbs0BRTlpwUpSAAy9tauHzbnff7J3kbIPYbk%2BReC0nHI8I6kAjnooiwOkSkeRrjLTDx52X%2B5lAYV%2FjpWV8ps2qMs9wvznW%2BIjsdnFjyBJ4MOUtP%2B8p2pnvG2c%2BUQc4KFbkWqI4HR3Xo99IxuCg4qmU3P2ZQ7f%2F5pGCc58tx4JztW0aZ9V%2Bom7bGH9Hm%2BDc%3D&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+&lt;br&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;方法&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;文件&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;作用&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;init&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/proc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;开启一个 forcegchelper 协程&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;forcegchelper&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/proc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;循环阻塞挂起+定时触发 gc&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;main&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/proc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;调用 sysmon 方法&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;sysmon&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/proc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;定时唤醒 forcegchelper，从而触发 gc&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcTrigger.test&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;校验是否满足 gc 触发条件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcStart&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;标记准备阶段主流程方法&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;init + forcegchelper&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -48,14 +374,36 @@ type gcTriggerKind int const ( // 堆触发 gcTriggerHeap gcTriggerKind = iota /
       <pubDate>Tue, 27 Dec 2022 18:22:59 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/golang%E4%BA%92%E6%96%A5%E9%94%81/</guid>
-      <description>互斥锁结构 // A Mutex is a mutual exclusion lock. // The zero value for a Mutex is an unlocked mutex. // // A Mutex must not be copied after first use. type Mutex struct { state int32 sema uint32 } state表示当前互斥锁的状态， sema是用于控制锁状态的信号量
-在默认情况下，互斥锁的所有状态位都是 0，int32 中的不同位分别表示了不同的状态：
-mutexLocked — 表示互斥锁的锁定状态；
-mutexWoken — 唤醒模式，此时释放锁的g不会唤醒休眠的g；
-mutexStarving — 当前的互斥锁进入饥饿状态；
-waitersCount — 当前互斥锁上等待的 Goroutine 个数；
-正常模式和饥饿模式的区别:
-在正常模式下，锁的等待者会按照先进先出的顺序获取锁。但是刚被唤起的 Goroutine 与新创建的 Goroutine 竞争时，大概率会获取不到锁，为了减少这种情况的出现，一旦 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止部分 Goroutine 被『饿死』。</description>
+      <description>&lt;h2 id=&#34;互斥锁结构&#34;&gt;互斥锁结构&lt;/h2&gt;
+&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// A Mutex is a mutual exclusion lock.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// The zero value for a Mutex is an unlocked mutex.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// A Mutex must not be copied after first use.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Mutex&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;state&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int32&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;sema&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;uint32&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt; &lt;code&gt;state&lt;/code&gt;表示当前互斥锁的状态， &lt;code&gt;sema&lt;/code&gt;是用于控制锁状态的信号量&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202212271823426.png&#34; alt=&#34;state&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;在默认情况下，互斥锁的所有状态位都是 0，&lt;code&gt;int32&lt;/code&gt; 中的不同位分别表示了不同的状态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;mutexLocked&lt;/code&gt; — 表示互斥锁的锁定状态；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;mutexWoken&lt;/code&gt; — 唤醒模式，此时释放锁的g不会唤醒休眠的g；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;mutexStarving&lt;/code&gt; — 当前的互斥锁进入饥饿状态；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;waitersCount&lt;/code&gt; — 当前互斥锁上等待的 Goroutine 个数；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正常模式和饥饿模式的区别:&lt;/p&gt;
+&lt;p&gt;在正常模式下，锁的等待者会按照先进先出的顺序获取锁。但是刚被唤起的 Goroutine 与新创建的 Goroutine 竞争时，大概率会获取不到锁，为了减少这种情况的出现，一旦 Goroutine 超过 1ms 没有获取到锁，它就会将当前互斥锁切换饥饿模式，防止部分 Goroutine 被『饿死』。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -64,12 +412,30 @@ waitersCount — 当前互斥锁上等待的 Goroutine 个数；
       <pubDate>Wed, 05 Jan 2022 23:38:06 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</guid>
-      <description>本文中使用的 go 版本：
-go version go1.17.2 darwin/amd64
-内容概述 本文介绍 golang 中经常用到的结构-map，简称哈希表、字典。介绍其结构及设计思路。
-map 在源码中的结构——hmap Go 语言采用的核心数据结构是哈希查找表，使用链表解决哈希冲突。
-在源码中$GOROOT/src/runtime/map.go，map 的核心结构体是这样的：
-// A header for a Go map. type hmap struct { count int // map中的元素数量，即len(map)时的返回值 flags uint8 B uint8 // buckets的以2为底的对数, 即2^B=buckets noverflow uint16 // 溢出桶的近似数; see incrnoverflow for details hash0 uint32 // 哈希种子 buckets unsafe.Pointer // 2^B个bucket的数组，may be nil if count==0. oldbuckets unsafe.Pointer // 哈希在扩容时用于保存之前 buckets 的字段，它的大小是当前 buckets 的一半； nevacuate uintptr // progress counter for evacuation (buckets less than this have been evacuated) extra *mapextra // optional fields } 在上面我们需要关注的核心是buckets，它是一个指针，最终指向了bmap结构体数组</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文中使用的 go 版本：&lt;/p&gt;
+&lt;p&gt;go version go1.17.2 darwin/amd64&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;内容概述&#34;&gt;内容概述&lt;/h2&gt;
+&lt;p&gt;本文介绍 golang 中经常用到的结构-map，简称哈希表、字典。介绍其结构及设计思路。&lt;/p&gt;
+&lt;h2 id=&#34;map-在源码中的结构hmap&#34;&gt;map 在源码中的结构——hmap&lt;/h2&gt;
+&lt;p&gt;Go 语言采用的核心数据结构是哈希查找表，使用链表解决哈希冲突。&lt;/p&gt;
+&lt;p&gt;在源码中&lt;code&gt;$GOROOT/src/runtime/map.go&lt;/code&gt;，map 的核心结构体是这样的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// A header for a Go map.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;hmap&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;count&lt;/span&gt;     &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// map中的元素数量，即len(map)时的返回值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;flags&lt;/span&gt;     &lt;span style=&#34;color:#66d9ef&#34;&gt;uint8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;B&lt;/span&gt;         &lt;span style=&#34;color:#66d9ef&#34;&gt;uint8&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// buckets的以2为底的对数, 即2^B=buckets&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;noverflow&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;uint16&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// 溢出桶的近似数; see incrnoverflow for details&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;hash0&lt;/span&gt;     &lt;span style=&#34;color:#66d9ef&#34;&gt;uint32&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// 哈希种子&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;buckets&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;unsafe&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Pointer&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// 2^B个bucket的数组，may be nil if count==0.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;oldbuckets&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;unsafe&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Pointer&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// 哈希在扩容时用于保存之前 buckets 的字段，它的大小是当前 buckets 的一半；&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;nevacuate&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;uintptr&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// progress counter for evacuation (buckets less than this have been evacuated)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;extra&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mapextra&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// optional fields&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在上面我们需要关注的核心是&lt;code&gt;buckets&lt;/code&gt;，它是一个指针，最终指向了&lt;code&gt;bmap&lt;/code&gt;结构体数组&lt;/p&gt;</description>
     </item>
     
   </channel>

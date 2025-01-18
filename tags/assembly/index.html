@@ -4,7 +4,11 @@
 SUBQ $0x18, SP // 对 SP 做减法，为函数分配函数栈帧 ... // 省略无用代码 ADDQ $0x18, SP // 对 SP 做加法，清除函数栈帧 栈的方向是从内存高位置向低位置的，所以对 SP 寄存器做减法，就是给栈分配内存，加法即回收内存。
 x86 汇编中 push 和 pop 指令可以接一个寄存器，如 pop ax，表示将栈顶元素放入 ax 寄存器并且栈顶寄存器自动回退，而 plan9 只是做了栈顶寄存器操作，对于赋值操作需要使用 mov 指令 😭
 数据搬运 plan9 汇编中，常数以$num形式表示，可以是负数，一般为 10 进制，当然也可以用$0x123的十六进制形式。
-MOVB $1, DI // 1 byte MOVW $0x10, BX // 2 bytes MOVD $1, DX // 4 bytes MOVQ $-10, AX // 8 bytes plan9 汇编中使用的通常是带有后缀的 MOV 指令，不同后缀的区别是移动的字节大小。这和 x86 的汇编不一样，在 x86 汇编中，决定移动字节大小的是寄存器。...</p></section><footer class=entry-footer><span title='2022-12-30 10:51:52 +0800 +0800'>2022-12-30</span>&nbsp;·&nbsp;壹次心</footer></div><a class=entry-link aria-label="post link to Golang——plan9汇编" href=https://www.yici.xin/post/tech/golangplan9%E6%B1%87%E7%BC%96/></a></article></main><footer class=footer><span>&copy; 2024 <a href=https://www.yici.xin/>绝知</a></span>
+MOVB $1, DI // 1 byte MOVW $0x10, BX // 2 bytes MOVD $1, DX // 4 bytes MOVQ $-10, AX // 8 bytes plan9 汇编中使用的通常是带有后缀的 MOV 指令，不同后缀的区别是移动的字节大小。这和 x86 的汇编不一样，在 x86 汇编中，决定移动字节大小的是寄存器。
+当然，还有个最明显的差异是 plan9 的操作数和 x86 是相反的，x86 汇编的 mov 是将右值移动到左部寄存器，而 plan9 是相反的。
+计算指令 常用的计算指令会有:
+ADDQ AX, BX // BX += AX SUBQ AX, BX // BX -= AX IMULQ AX, BX // BX *= AX 计算指令和 MOV 指令一样，也有不同的后缀来对应操作数的字节大小，例如 ADDQ/ADDW/ADDB，这里每个后缀的意思和 MOV 一致。
+...</p></section><footer class=entry-footer><span title='2022-12-30 10:51:52 +0800 +0800'>2022-12-30</span>&nbsp;·&nbsp;壹次心</footer></div><a class=entry-link aria-label="post link to Golang——plan9汇编" href=https://www.yici.xin/post/tech/golangplan9%E6%B1%87%E7%BC%96/></a></article></main><footer class=footer><span>&copy; 2025 <a href=https://www.yici.xin/>绝知</a></span>
 <span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>

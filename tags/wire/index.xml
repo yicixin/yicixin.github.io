@@ -17,13 +17,53 @@
       <pubDate>Tue, 27 Dec 2022 18:09:30 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/wire-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</guid>
-      <description>用法 一般会在一个名为wire.go的文件里提供需要自动注入的函数，在开头添加好tag，在函数中使用wire.Build方法，并提供创建依赖的方法，多个依赖可以组装为一个Set。
-示例 // +build wireinject // tag不能忘 var ormSet = wire.NewSet(mysql.Newengine) var DataSourceSet = wire.NewSet(ormSet, japi.GetClient, cache.NewRedisCache) func InitAuthorRepo() AuthorRepoInterface { wire.Build( NewAuthorRepo, // 可以用这种方式替代New函数，特别是New的参数比较多时，*表示对结构体的全部字段进行生成 // wire.Struct(new(authorRepo), &amp;#34;*&amp;#34;), // 如果NewAuthorRepo的返回值不是显示声明AuthorRepoInterface，wire会提示无AuthorRepoInterface的provider // 此时就需要下面的语句进行绑定 // wire.Bind(new(AuthorRepoInterface), new(*authorRepo)), repo.DataSourceSet, ) return nil } 特性 wire.Struct type App struct { Foo *Foo Bar *Bar NoInject int `wire:&amp;#34;-&amp;#34;` } 该方法可以代替New函数，特别是New函数参数较多，不太好写的时候。
-wire.Struct(new(App),&amp;quot;Foo&amp;quot;,&amp;quot;Bar&amp;quot;)生成指定的字段。
-wire.Struct(new(App), &amp;quot;*&amp;quot;)表示结构体的全部字段都自动生成。
-若是有某些字段不想在*时生成，可以给它添加tag。
-wire.Bind wire.Bind(new(AuthorRepoInterface), new(*authorRepo)) wire.Bind可以指定结构体实现的接口，如果结构体的New函数返回值不是显示声明为其实现的接口，那么wire会报错，此时就需要使用Bind方法进行绑定。
-wire.Value // provider.go type Foo struct { X int }// wire.</description>
+      <description>&lt;h2 id=&#34;用法&#34;&gt;用法&lt;/h2&gt;
+&lt;p&gt;一般会在一个名为&lt;code&gt;wire.go&lt;/code&gt;的文件里提供需要自动注入的函数，在开头添加好&lt;code&gt;tag&lt;/code&gt;，在函数中使用&lt;code&gt;wire.Build&lt;/code&gt;方法，并提供创建依赖的方法，多个依赖可以组装为一个&lt;code&gt;Set&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;示例&#34;&gt;示例&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// +build wireinject  // tag不能忘&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ormSet&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;wire&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;NewSet&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;mysql&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Newengine&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;DataSourceSet&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;wire&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;NewSet&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;ormSet&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;japi&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;GetClient&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;cache&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;NewRedisCache&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;InitAuthorRepo&lt;/span&gt;() &lt;span style=&#34;color:#a6e22e&#34;&gt;AuthorRepoInterface&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;wire&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Build&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;NewAuthorRepo&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// 可以用这种方式替代New函数，特别是New的参数比较多时，*表示对结构体的全部字段进行生成&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// wire.Struct(new(authorRepo), &amp;#34;*&amp;#34;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// 如果NewAuthorRepo的返回值不是显示声明AuthorRepoInterface，wire会提示无AuthorRepoInterface的provider&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// 此时就需要下面的语句进行绑定&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// wire.Bind(new(AuthorRepoInterface), new(*authorRepo)),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;repo&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;DataSourceSet&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;特性&#34;&gt;特性&lt;/h2&gt;
+&lt;h3 id=&#34;wirestruct&#34;&gt;wire.Struct&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;App&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;Foo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Foo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;Bar&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Bar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;NoInject&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`wire:&amp;#34;-&amp;#34;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;该方法可以代替New函数，特别是New函数参数较多，不太好写的时候。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;wire.Struct(new(App),&amp;quot;Foo&amp;quot;,&amp;quot;Bar&amp;quot;)&lt;/code&gt;生成指定的字段。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;wire.Struct(new(App), &amp;quot;*&amp;quot;)&lt;/code&gt;表示结构体的全部字段都自动生成。&lt;/p&gt;
+&lt;p&gt;若是有某些字段不想在*时生成，可以给它添加tag。&lt;/p&gt;
+&lt;h3 id=&#34;wirebind&#34;&gt;wire.Bind&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;wire&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Bind&lt;/span&gt;(new(&lt;span style=&#34;color:#a6e22e&#34;&gt;AuthorRepoInterface&lt;/span&gt;), new(&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;authorRepo&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;wire.Bind&lt;/code&gt;可以指定结构体实现的接口，如果结构体的New函数返回值不是显示声明为其实现的接口，那么wire会报错，此时就需要使用&lt;code&gt;Bind&lt;/code&gt;方法进行绑定。&lt;/p&gt;
+&lt;h3 id=&#34;wirevalue&#34;&gt;&lt;strong&gt;wire.Value&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// provider.go&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Foo&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;X&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;span style=&#34;color:#75715e&#34;&gt;// wire.go&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;wire&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Build&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;wire&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Value&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;Foo&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;X&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;42&lt;/span&gt;}))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;虽不常见，但有时需要为基本类型的属性绑定具体值， 这时可以使用 &lt;code&gt;wire.Value&lt;/code&gt; &lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;wire&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Build&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;wire&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;InterfaceValue&lt;/span&gt;(new(&lt;span style=&#34;color:#a6e22e&#34;&gt;io&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Reader&lt;/span&gt;), &lt;span style=&#34;color:#a6e22e&#34;&gt;os&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Stdin&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为接口类型绑定具体值，可以使用 &lt;code&gt;wire.InterfaceValue&lt;/code&gt; &lt;/p&gt;
+&lt;h3 id=&#34;wirefieldsof&#34;&gt;&lt;strong&gt;wire.FieldsOf&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;有时我们只是需要用某个对象的属性作为Provider，例如:&lt;/p&gt;</description>
     </item>
     
   </channel>

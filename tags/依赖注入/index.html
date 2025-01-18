@@ -6,7 +6,8 @@ wire.Struct(new(App),"Foo","Bar")生成指定的字段。
 wire.Struct(new(App), "*")表示结构体的全部字段都自动生成。
 若是有某些字段不想在*时生成，可以给它添加tag。
 wire.Bind wire.Bind(new(AuthorRepoInterface), new(*authorRepo)) wire.Bind可以指定结构体实现的接口，如果结构体的New函数返回值不是显示声明为其实现的接口，那么wire会报错，此时就需要使用Bind方法进行绑定。
-wire.Value // provider.go type Foo struct { X int }// wire....</p></section><footer class=entry-footer><span title='2022-12-27 18:09:30 +0800 +0800'>2022-12-27</span>&nbsp;·&nbsp;壹次心</footer></div><a class=entry-link aria-label="post link to Wire 依赖注入" href=https://www.yici.xin/post/tech/wire-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/></a></article></main><footer class=footer><span>&copy; 2024 <a href=https://www.yici.xin/>绝知</a></span>
+wire.Value // provider.go type Foo struct { X int }// wire.go ... wire.Build(wire.Value(Foo{X: 42})) ... 虽不常见，但有时需要为基本类型的属性绑定具体值， 这时可以使用 wire.Value wire.Build(wire.InterfaceValue(new(io.Reader), os.Stdin)) 为接口类型绑定具体值，可以使用 wire.InterfaceValue wire.FieldsOf 有时我们只是需要用某个对象的属性作为Provider，例如:
+...</p></section><footer class=entry-footer><span title='2022-12-27 18:09:30 +0800 +0800'>2022-12-27</span>&nbsp;·&nbsp;壹次心</footer></div><a class=entry-link aria-label="post link to Wire 依赖注入" href=https://www.yici.xin/post/tech/wire-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/></a></article></main><footer class=footer><span>&copy; 2025 <a href=https://www.yici.xin/>绝知</a></span>
 <span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>

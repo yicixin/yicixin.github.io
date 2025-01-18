@@ -17,9 +17,185 @@
       <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
       
       <guid>https://www.yici.xin/post/tech/golang%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</guid>
-      <description>GC源码分布: 流程 文件 标记准备 runtime/mgc.go 调步策略 runtime/mgcpacer.go 并发标记 runtime/mgcmark.go 清扫流程 runtime/msweep.go 位图标识 runtime/mbitmap.go 触发屏障 runtime/mbwbuf.go 内存回收 runtime/mgcscavenge.go GC触发链路: 触发 GC 的事件类型可以分为如下三种：
-类型 触发事件 校验条件 gcTriggerHeap 分配对象时触发 堆已分配内存达到阈值 gcTriggerTime 由 forcegchelper 守护协程定时触发 每2分钟触发一次 gcTriggerCycle 用户调用 runtime.GC 方法 上一轮 GC 已结束 触发类型的源码:
-type gcTriggerKind int const ( // 堆触发 gcTriggerHeap gcTriggerKind = iota // 定时触发 gcTriggerTime // 手动触发 gcTriggerCycle ) // 进行触发条件的校验 func (t gcTrigger) test() bool { if !memstats.enablegc || panicking.Load() !</description>
+      <description>&lt;h2 id=&#34;gc源码分布&#34;&gt;GC源码分布:&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;流程&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;文件&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;标记准备&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgc.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;调步策略&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgcpacer.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;并发标记&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgcmark.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;清扫流程&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/msweep.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;位图标识&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mbitmap.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;触发屏障&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mbwbuf.go&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;内存回收&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgcscavenge.go&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;gc触发链路&#34;&gt;GC触发链路:&lt;/h2&gt;
+&lt;p&gt;触发 GC 的事件类型可以分为如下三种：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;类型&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;触发事件&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;校验条件&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcTriggerHeap&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;分配对象时触发&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;堆已分配内存达到阈值&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcTriggerTime&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;由 forcegchelper 守护协程定时触发&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;每2分钟触发一次&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcTriggerCycle&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;用户调用 runtime.GC 方法&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;上一轮 GC 已结束&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;触发类型的源码:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerKind&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 堆触发&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerHeap&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerKind&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;iota&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 定时触发&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerTime&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// 手动触发&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerCycle&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 进行触发条件的校验&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTrigger&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;test&lt;/span&gt;() &lt;span style=&#34;color:#66d9ef&#34;&gt;bool&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; !&lt;span style=&#34;color:#a6e22e&#34;&gt;memstats&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;enablegc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;panicking&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcphase&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;_GCoff&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;switch&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;kind&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerHeap&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 触发堆大小&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;trigger&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;_&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcController&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;trigger&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 比较大小是否满足&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcController&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;heapLive&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;trigger&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerTime&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// gcController.gcPercent &amp;lt; 0 表示不进行GC&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcController&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;gcPercent&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load&lt;/span&gt;() &amp;lt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 上次gc时间&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;lastgc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; int64(&lt;span style=&#34;color:#a6e22e&#34;&gt;atomic&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load64&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;memstats&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;last_gc_nanotime&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lastgc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;now&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lastgc&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;forcegcperiod&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;case&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gcTriggerCycle&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// t.n &amp;gt; work.cycles, but accounting for wraparound.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; int32(&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;work&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;cycles&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Load&lt;/span&gt;()) &amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;定时触发gc&#34;&gt;定时触发GC&lt;/h3&gt;
+&lt;!DOCTYPE HTML&gt;
+&lt;html lang=&#34;en&#34;&gt;
+
+&lt;head&gt;
+    &lt;style type=&#34;text/css&#34;&gt;
+        #chart {
+            padding-bottom: 66%;
+            position: relative;
+            display: block;
+            width: 100%;
+            border-bottom: 5px solid;
+        }
+
+        #chart iframe {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+    &lt;/style&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&#34;chart&#34;&gt;
+        &lt;iframe id=&#34;embed_dom&#34; width=100% height=100%  name=&#34;embed_dom&#34; frameborder=&#34;0&#34; src=&#34;https://viewer.diagrams.net/?tags=%7B%7D&amp;amp;highlight=0000ff&amp;amp;edit=_blank&amp;amp;layers=1&amp;amp;nav=1&amp;amp;title=golang-%E5%AE%9A%E6%97%B6gc%E8%A7%A6%E5%8F%91%E8%B7%AF%E5%BE%84.drawio#R7Zhbl5owEMc%2FjY%2FbI0G5vNa19qHtOXvsZX2MMEB2A2NDUOmnb5CwQHHV9qirnj7J%2FDO5zeQ3AXvmKF5PBF1En9EH3iN9f90z73uEGGRgqJ9CyUvFce1SCAXztVMtTNkv0GJfqxnzIW05SkQu2aItepgk4MmWRoXAVdstQN6edUFD6AhTj%2FKu%2BoP5MtK7IHatfwQWRtXMhuWWLTGtnPVO0oj6uGpI5rhnjgSiLJ%2Fi9Qh4EbwqLmW%2FD6%2B0vixMQCIP6XD38O0L%2ByoI2N9n9KfxkE2EdWfqtcm82jD4av%2FaRCEjDDGhfFyr7wVmiQ%2FFqH1l1T6fEBdKNJT4BFLmOpk0k6ikSMZct8KaycfG86wY6t1QW%2FdrPfLGyCsjkSJ%2FbBqNXoVZd9tYVb8AE6kXUoS8tPX2toRQSylmwoMdcauOIhUhyB1%2BpPQrgtqYQCdoAhiDWqxyEMCpZMv2oaP67IYvfnV61YPO8F9kW4%2B7pDzTM7GEyc4RqBNcZGgVMQnTBd3EY6UobyezE2DG%2BQg5is1Ypk%2FBCTylp1LgMzRaLM%2BBeaBaXs3CEoSE9c646VZTQ5dXxUMzt6qRdbUUNWi1%2BqcKtNEJ6o1z9e8okQNRqm6EC2GJdFgKUG009CLgCxA3ABUx9lNl2OfEatCJeehN1cE5cQkbguMPtkXbIXPTso4Tbcu9sBpm%2Fy9hh5aw4YElzLqoCjbs0BRTlpwUpSAAy9tauHzbnff7J3kbIPYbk%2BReC0nHI8I6kAjnooiwOkSkeRrjLTDx52X%2B5lAYV%2FjpWV8ps2qMs9wvznW%2BIjsdnFjyBJ4MOUtP%2B8p2pnvG2c%2BUQc4KFbkWqI4HR3Xo99IxuCg4qmU3P2ZQ7f%2F5pGCc58tx4JztW0aZ9V%2Bom7bGH9Hm%2BDc%3D&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+&lt;br&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;方法&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;文件&lt;/strong&gt;&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;&lt;strong&gt;作用&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;init&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/proc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;开启一个 forcegchelper 协程&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;forcegchelper&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/proc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;循环阻塞挂起+定时触发 gc&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;main&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/proc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;调用 sysmon 方法&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;sysmon&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/proc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;定时唤醒 forcegchelper，从而触发 gc&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcTrigger.test&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;校验是否满足 gc 触发条件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;gcStart&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;runtime/mgc.go&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;标记准备阶段主流程方法&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;init + forcegchelper&lt;/p&gt;</description>
     </item>
     
   </channel>
