@@ -27,40 +27,40 @@
     
         &lt;button
           data-tab-item=&#34;New&#34;
-          data-tab-group=&#34;0.6775115532070333&#34;
+          data-tab-group=&#34;0.6724832624760074&#34;
           class=&#34;tab-nav-button btn active&#34;
-          onclick=&#34;switchTab(&#39;0.6775115532070333&#39;,&#39;New&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.6724832624760074&#39;,&#39;New&#39;)&#34;
          &gt;New&lt;/button&gt;
     
         &lt;button
           data-tab-item=&#34;预先设置容量&#34;
-          data-tab-group=&#34;0.6775115532070333&#34;
+          data-tab-group=&#34;0.6724832624760074&#34;
           class=&#34;tab-nav-button btn &#34;
-          onclick=&#34;switchTab(&#39;0.6775115532070333&#39;,&#39;预先设置容量&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.6724832624760074&#39;,&#39;预先设置容量&#39;)&#34;
          &gt;预先设置容量&lt;/button&gt;
     
         &lt;button
           data-tab-item=&#34;vec!宏&#34;
-          data-tab-group=&#34;0.6775115532070333&#34;
+          data-tab-group=&#34;0.6724832624760074&#34;
           class=&#34;tab-nav-button btn &#34;
-          onclick=&#34;switchTab(&#39;0.6775115532070333&#39;,&#39;vec!宏&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.6724832624760074&#39;,&#39;vec!宏&#39;)&#34;
          &gt;vec!宏&lt;/button&gt;
     
     &lt;/div&gt;
     &lt;div class=&#34;tab-content&#34;&gt;
         
-        &lt;div data-tab-item=&#34;New&#34; data-tab-group=&#34;0.6775115532070333&#34; class=&#34;tab-item active&#34;&gt;
-            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
+        &lt;div data-tab-item=&#34;New&#34; data-tab-group=&#34;0.6724832624760074&#34; class=&#34;tab-item active&#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; v: &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;Vec&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;Vec&lt;/span&gt;::new();
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/div&gt;
         
-        &lt;div data-tab-item=&#34;预先设置容量&#34; data-tab-group=&#34;0.6775115532070333&#34; class=&#34;tab-item &#34;&gt;
-            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::with_capacity(capacity)
+        &lt;div data-tab-item=&#34;预先设置容量&#34; data-tab-group=&#34;0.6724832624760074&#34; class=&#34;tab-item &#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; v: &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;Vec&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;Vec&lt;/span&gt;::with_capacity(capacity)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/div&gt;
         
-        &lt;div data-tab-item=&#34;vec!宏&#34; data-tab-group=&#34;0.6775115532070333&#34; class=&#34;tab-item &#34;&gt;
-            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;];
+        &lt;div data-tab-item=&#34;vec!宏&#34; data-tab-group=&#34;0.6724832624760074&#34; class=&#34;tab-item &#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/div&gt;
         
@@ -80,38 +80,38 @@
     
         &lt;button
           data-tab-item=&#34;下标索引&#34;
-          data-tab-group=&#34;0.03505140155485743&#34;
+          data-tab-group=&#34;0.9890846195399899&#34;
           class=&#34;tab-nav-button btn active&#34;
-          onclick=&#34;switchTab(&#39;0.03505140155485743&#39;,&#39;下标索引&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.9890846195399899&#39;,&#39;下标索引&#39;)&#34;
          &gt;下标索引&lt;/button&gt;
     
         &lt;button
           data-tab-item=&#34;get&#34;
-          data-tab-group=&#34;0.03505140155485743&#34;
+          data-tab-group=&#34;0.9890846195399899&#34;
           class=&#34;tab-nav-button btn &#34;
-          onclick=&#34;switchTab(&#39;0.03505140155485743&#39;,&#39;get&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.9890846195399899&#39;,&#39;get&#39;)&#34;
          &gt;get&lt;/button&gt;
     
     &lt;/div&gt;
     &lt;div class=&#34;tab-content&#34;&gt;
         
-        &lt;div data-tab-item=&#34;下标索引&#34; data-tab-group=&#34;0.03505140155485743&#34; class=&#34;tab-item active&#34;&gt;
-            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;];
+        &lt;div data-tab-item=&#34;下标索引&#34; data-tab-group=&#34;0.9890846195399899&#34; class=&#34;tab-item active&#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;5&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; third: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;v[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;];
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    println!(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;第三个元素是 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, third);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; third: &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd&#34;&gt;i32&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;v[&lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    println!(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;第三个元素是 &lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;, third);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/div&gt;
         
-        &lt;div data-tab-item=&#34;get&#34; data-tab-group=&#34;0.03505140155485743&#34; class=&#34;tab-item &#34;&gt;
-            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;];
+        &lt;div data-tab-item=&#34;get&#34; data-tab-group=&#34;0.9890846195399899&#34; class=&#34;tab-item &#34;&gt;
+            &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#bd93f9&#34;&gt;5&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;match&lt;/span&gt; v.get(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Some(third) &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; println!(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;第三个元素是 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{third}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;),
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        None &lt;span style=&#34;color:#f92672&#34;&gt;=&amp;gt;&lt;/span&gt; println!(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;去你的第三个元素，根本没有！&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;match&lt;/span&gt; v.get(&lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;Some&lt;/span&gt;(third) &lt;span style=&#34;color:#ff79c6&#34;&gt;=&amp;gt;&lt;/span&gt; println!(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;第三个元素是 &lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;{third}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;None&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&amp;gt;&lt;/span&gt; println!(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;去你的第三个元素，根本没有！&amp;#34;&lt;/span&gt;),
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -132,24 +132,24 @@
       <description>&lt;h2 id=&#34;泛型&#34;&gt;泛型&lt;/h2&gt;
 &lt;h3 id=&#34;函数签名中使用泛型&#34;&gt;函数签名中使用泛型&lt;/h3&gt;
 &lt;p&gt;尝试编写一个寻找数组中最大值的函数:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;largest_i32&lt;/span&gt;(list: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;[&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;]) -&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; largest &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;list[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;largest_i32&lt;/span&gt;(list: &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;[&lt;span style=&#34;color:#8be9fd&#34;&gt;i32&lt;/span&gt;]) -&amp;gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd&#34;&gt;i32&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;mut&lt;/span&gt; largest &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;list[&lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; item &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; list.iter() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; item &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; largest {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            largest &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; item;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; item &lt;span style=&#34;color:#ff79c6&#34;&gt;in&lt;/span&gt; list.iter() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; item &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; largest {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            largest &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; item;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    largest
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;该函数仅支持i32类型，如果我们需要一个char类型的largest_char函数，应该会是这样:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;largest_char&lt;/span&gt;(list: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;[&lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt;]) -&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; largest &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;list[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;largest_char&lt;/span&gt;(list: &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;[&lt;span style=&#34;color:#8be9fd&#34;&gt;char&lt;/span&gt;]) -&amp;gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd&#34;&gt;char&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;mut&lt;/span&gt; largest &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;list[&lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; item &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; list.iter() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; item &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; largest {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            largest &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; item;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; item &lt;span style=&#34;color:#ff79c6&#34;&gt;in&lt;/span&gt; list.iter() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; item &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; largest {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            largest &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; item;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -157,12 +157,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以发现，我们在编写一些逻辑重复，仅类型不同的代码，为了能够支持更多的类型而不需要手写它们的largest函数，可以将这部分代码中的类型使用泛型替换。&lt;/p&gt;
 &lt;p&gt;所以泛型版本应该是这么写的:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;largest_t&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;(list: &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;[T]) -&amp;gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;T&lt;/span&gt; {  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; largest &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;list[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;];  
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;largest_t&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt;(list: &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;[T]) -&amp;gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#50fa7b&#34;&gt;T&lt;/span&gt; {  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;mut&lt;/span&gt; largest &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;list[&lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;];  
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; item &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; list.iter() {  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; item &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; largest {  
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            largest &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; item;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; item &lt;span style=&#34;color:#ff79c6&#34;&gt;in&lt;/span&gt; list.iter() {  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; item &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;gt;&lt;/span&gt; largest {  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            largest &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; item;  
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }  
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }  
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
@@ -263,18 +263,18 @@
       <description>&lt;h2 id=&#34;变量与可变性&#34;&gt;变量与可变性&lt;/h2&gt;
 &lt;h3 id=&#34;变量的可变性&#34;&gt;变量的可变性&lt;/h3&gt;
 &lt;p&gt;rust中进行变量的声明时，使用&lt;code&gt;let&lt;/code&gt;关键字，如:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; x;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; x;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样声明出来的变量是不可变的，不可以进行第二次赋值。
 如果需要后续可以修改这个变量，在声明时需要加上&lt;code&gt;mut&lt;/code&gt;关键字:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;mut&lt;/span&gt; x;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;mut&lt;/span&gt; x;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;常量&#34;&gt;常量&lt;/h3&gt;
 &lt;p&gt;声明常量使用 &lt;code&gt;const&lt;/code&gt; 关键字而不是 &lt;code&gt;let&lt;/code&gt;，并且&lt;strong&gt;必须&lt;/strong&gt;注明值的类型，且声明时就必须赋值。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// ✅
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;THREE_HOURS_IN_SECONDS&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt;;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;// ✅
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;const&lt;/span&gt; THREE_HOURS_IN_SECONDS: &lt;span style=&#34;color:#8be9fd&#34;&gt;u32&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;60&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;60&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// ❌
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;THREE_HOURS_IN_SECONDS&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;u32&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;THREE_HOURS_IN_SECONDS&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;// ❌
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;const&lt;/span&gt; THREE_HOURS_IN_SECONDS: &lt;span style=&#34;color:#8be9fd&#34;&gt;u32&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;THREE_HOURS_IN_SECONDS &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;60&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;60&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;style type=&#34;text/css&#34; media=&#34;screen&#34;&gt;
     html {
