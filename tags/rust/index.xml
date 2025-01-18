@@ -27,39 +27,39 @@
     
         &lt;button
           data-tab-item=&#34;New&#34;
-          data-tab-group=&#34;0.752229194193911&#34;
+          data-tab-group=&#34;0.6775115532070333&#34;
           class=&#34;tab-nav-button btn active&#34;
-          onclick=&#34;switchTab(&#39;0.752229194193911&#39;,&#39;New&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.6775115532070333&#39;,&#39;New&#39;)&#34;
          &gt;New&lt;/button&gt;
     
         &lt;button
           data-tab-item=&#34;预先设置容量&#34;
-          data-tab-group=&#34;0.752229194193911&#34;
+          data-tab-group=&#34;0.6775115532070333&#34;
           class=&#34;tab-nav-button btn &#34;
-          onclick=&#34;switchTab(&#39;0.752229194193911&#39;,&#39;预先设置容量&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.6775115532070333&#39;,&#39;预先设置容量&#39;)&#34;
          &gt;预先设置容量&lt;/button&gt;
     
         &lt;button
           data-tab-item=&#34;vec!宏&#34;
-          data-tab-group=&#34;0.752229194193911&#34;
+          data-tab-group=&#34;0.6775115532070333&#34;
           class=&#34;tab-nav-button btn &#34;
-          onclick=&#34;switchTab(&#39;0.752229194193911&#39;,&#39;vec!宏&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.6775115532070333&#39;,&#39;vec!宏&#39;)&#34;
          &gt;vec!宏&lt;/button&gt;
     
     &lt;/div&gt;
     &lt;div class=&#34;tab-content&#34;&gt;
         
-        &lt;div data-tab-item=&#34;New&#34; data-tab-group=&#34;0.752229194193911&#34; class=&#34;tab-item active&#34;&gt;
+        &lt;div data-tab-item=&#34;New&#34; data-tab-group=&#34;0.6775115532070333&#34; class=&#34;tab-item active&#34;&gt;
             &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::new();
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/div&gt;
         
-        &lt;div data-tab-item=&#34;预先设置容量&#34; data-tab-group=&#34;0.752229194193911&#34; class=&#34;tab-item &#34;&gt;
+        &lt;div data-tab-item=&#34;预先设置容量&#34; data-tab-group=&#34;0.6775115532070333&#34; class=&#34;tab-item &#34;&gt;
             &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v: Vec&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Vec::with_capacity(capacity)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/div&gt;
         
-        &lt;div data-tab-item=&#34;vec!宏&#34; data-tab-group=&#34;0.752229194193911&#34; class=&#34;tab-item &#34;&gt;
+        &lt;div data-tab-item=&#34;vec!宏&#34; data-tab-group=&#34;0.6775115532070333&#34; class=&#34;tab-item &#34;&gt;
             &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/div&gt;
@@ -80,22 +80,22 @@
     
         &lt;button
           data-tab-item=&#34;下标索引&#34;
-          data-tab-group=&#34;0.8275701150957011&#34;
+          data-tab-group=&#34;0.03505140155485743&#34;
           class=&#34;tab-nav-button btn active&#34;
-          onclick=&#34;switchTab(&#39;0.8275701150957011&#39;,&#39;下标索引&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.03505140155485743&#39;,&#39;下标索引&#39;)&#34;
          &gt;下标索引&lt;/button&gt;
     
         &lt;button
           data-tab-item=&#34;get&#34;
-          data-tab-group=&#34;0.8275701150957011&#34;
+          data-tab-group=&#34;0.03505140155485743&#34;
           class=&#34;tab-nav-button btn &#34;
-          onclick=&#34;switchTab(&#39;0.8275701150957011&#39;,&#39;get&#39;)&#34;
+          onclick=&#34;switchTab(&#39;0.03505140155485743&#39;,&#39;get&#39;)&#34;
          &gt;get&lt;/button&gt;
     
     &lt;/div&gt;
     &lt;div class=&#34;tab-content&#34;&gt;
         
-        &lt;div data-tab-item=&#34;下标索引&#34; data-tab-group=&#34;0.8275701150957011&#34; class=&#34;tab-item active&#34;&gt;
+        &lt;div data-tab-item=&#34;下标索引&#34; data-tab-group=&#34;0.03505140155485743&#34; class=&#34;tab-item active&#34;&gt;
             &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -105,7 +105,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/div&gt;
         
-        &lt;div data-tab-item=&#34;get&#34; data-tab-group=&#34;0.8275701150957011&#34; class=&#34;tab-item &#34;&gt;
+        &lt;div data-tab-item=&#34;get&#34; data-tab-group=&#34;0.03505140155485743&#34; class=&#34;tab-item &#34;&gt;
             &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; vec![&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
