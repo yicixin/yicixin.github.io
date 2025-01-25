@@ -10,67 +10,13 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 22 Feb 2024 00:28:31 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>图形学</title>
-      <link>https://www.yici.xin/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</link>
-      <pubDate>Thu, 22 Feb 2024 00:28:31 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Database</title>
-      <link>https://www.yici.xin/tags/database/</link>
-      <pubDate>Mon, 05 Feb 2024 09:43:27 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/database/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Wed, 01 Feb 2023 19:34:04 +0800</lastBuildDate><atom:link href="https://www.yici.xin/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Golang</title>
       <link>https://www.yici.xin/tags/golang/</link>
-      <pubDate>Mon, 05 Feb 2024 09:43:27 +0800</pubDate>
+      <pubDate>Wed, 01 Feb 2023 19:34:04 +0800</pubDate>
       
       <guid>https://www.yici.xin/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rust</title>
-      <link>https://www.yici.xin/tags/rust/</link>
-      <pubDate>Tue, 16 May 2023 21:26:57 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/rust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>动态数组</title>
-      <link>https://www.yici.xin/tags/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</link>
-      <pubDate>Tue, 16 May 2023 21:26:57 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HTTP</title>
-      <link>https://www.yici.xin/tags/http/</link>
-      <pubDate>Fri, 24 Mar 2023 22:40:52 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/http/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>QUIC</title>
-      <link>https://www.yici.xin/tags/quic/</link>
-      <pubDate>Fri, 24 Mar 2023 22:40:52 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/quic/</guid>
       <description></description>
     </item>
     
@@ -80,42 +26,6 @@
       <pubDate>Wed, 01 Feb 2023 19:34:04 +0800</pubDate>
       
       <guid>https://www.yici.xin/tags/string/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Trait</title>
-      <link>https://www.yici.xin/tags/trait/</link>
-      <pubDate>Wed, 18 Jan 2023 14:16:44 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/trait/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>泛型</title>
-      <link>https://www.yici.xin/tags/%E6%B3%9B%E5%9E%8B/</link>
-      <pubDate>Wed, 18 Jan 2023 14:16:44 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/%E6%B3%9B%E5%9E%8B/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Assembly</title>
-      <link>https://www.yici.xin/tags/assembly/</link>
-      <pubDate>Fri, 30 Dec 2022 10:51:52 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/assembly/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Plan9</title>
-      <link>https://www.yici.xin/tags/plan9/</link>
-      <pubDate>Fri, 30 Dec 2022 10:51:52 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/plan9/</guid>
       <description></description>
     </item>
     
@@ -165,47 +75,11 @@
     </item>
     
     <item>
-      <title>GC</title>
-      <link>https://www.yici.xin/tags/gc/</link>
-      <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/gc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>内存回收</title>
-      <link>https://www.yici.xin/tags/%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</link>
-      <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>锁</title>
       <link>https://www.yici.xin/tags/%E9%94%81/</link>
       <pubDate>Tue, 27 Dec 2022 18:26:23 +0800</pubDate>
       
       <guid>https://www.yici.xin/tags/%E9%94%81/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pprof</title>
-      <link>https://www.yici.xin/tags/pprof/</link>
-      <pubDate>Tue, 27 Dec 2022 18:18:12 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/pprof/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>工具</title>
-      <link>https://www.yici.xin/tags/%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Tue, 27 Dec 2022 18:18:12 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
@@ -237,29 +111,11 @@
     </item>
     
     <item>
-      <title>对象池</title>
-      <link>https://www.yici.xin/tags/%E5%AF%B9%E8%B1%A1%E6%B1%A0/</link>
-      <pubDate>Mon, 21 Nov 2022 17:05:22 +0800</pubDate>
+      <title>Rust</title>
+      <link>https://www.yici.xin/tags/rust/</link>
+      <pubDate>Wed, 21 Dec 2022 18:14:01 +0800</pubDate>
       
-      <guid>https://www.yici.xin/tags/%E5%AF%B9%E8%B1%A1%E6%B1%A0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>源码</title>
-      <link>https://www.yici.xin/tags/%E6%BA%90%E7%A0%81/</link>
-      <pubDate>Mon, 21 Nov 2022 17:05:22 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/%E6%BA%90%E7%A0%81/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Channel</title>
-      <link>https://www.yici.xin/tags/channel/</link>
-      <pubDate>Mon, 21 Nov 2022 09:45:13 +0800</pubDate>
-      
-      <guid>https://www.yici.xin/tags/channel/</guid>
+      <guid>https://www.yici.xin/tags/rust/</guid>
       <description></description>
     </item>
     
