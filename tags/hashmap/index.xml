@@ -145,8 +145,7 @@
       <guid>https://www.yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文中使用的 go 版本：&lt;/p&gt;
-&lt;p&gt;go version go1.17.2 darwin/amd64&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;go version go1.17.2 darwin/amd64&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;内容概述&#34;&gt;内容概述&lt;/h2&gt;
 &lt;p&gt;本文介绍 golang 中经常用到的结构-map，简称哈希表、字典。介绍其结构及设计思路。&lt;/p&gt;
 &lt;h2 id=&#34;map-在源码中的结构hmap&#34;&gt;map 在源码中的结构——hmap&lt;/h2&gt;

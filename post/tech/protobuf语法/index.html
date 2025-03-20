@@ -12,7 +12,6 @@ message SearchRequest {
 }
 
 .proto文件的第一行指定了当前正在使用proto3语法，如果未写，proto的编译器会默认使用proto2的语法进行解析。
-
 SearchRequest定义了三个字段，它们都有类型和名称，并且在最后给了一个唯一编号，编号的作用是在序列化后的二进制序列中标识字段。当编号为1-15的范围内时，在编码时只需要一个字节，而16-2047就需要两个字节，具体原因可以了解一下protobuf的编码原理。所以，1-15的编号最好要保留给那些最经常出现的字段。你能使用的最小编号是1，最大是$2^{29}$-1，不过你不能使用19000-19999，这些编号为protobuf的实现而预保留了，如果你使用了，是过不了编译的。
 在单个.proto文件中能定义多个message类型:
 syntax = "proto3";
@@ -66,7 +65,7 @@ message SearchRequest {
     }
     Corpus corpus = 4;
 }
-有一点需要注意，枚举的第一个字段值必须为0，因为这样我们就能用0作为数字编号的默认值，并且为了兼容proto2，枚举的第一个字段即为默认值。'><meta name=author content="壹次心"><link rel=canonical href=https://www.yici.xin/post/tech/protobuf%E8%AF%AD%E6%B3%95/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.278e8b2dd0edae6a4a4d865210e46385ee100556bcf14ba56506e7501326056e.css integrity="sha256-J46LLdDtrmpKTYZSEORjhe4QBVa88UulZQbnUBMmBW4=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/js/extended.js></script><link rel=icon href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><link rel=icon type=image/png sizes=16x16 href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><link rel=icon type=image/png sizes=32x32 href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><link rel=apple-touch-icon href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><link rel=mask-icon href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=https://www.yici.xin/post/tech/protobuf%E8%AF%AD%E6%B3%95/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css><meta property="og:title" content="Protobuf语法"><meta property="og:description" content='什么是protobuf？
+有一点需要注意，枚举的第一个字段值必须为0，因为这样我们就能用0作为数字编号的默认值，并且为了兼容proto2，枚举的第一个字段即为默认值。'><meta name=author content="壹次心"><link rel=canonical href=https://www.yici.xin/post/tech/protobuf%E8%AF%AD%E6%B3%95/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.78b84b440f267cdcbe28028fe8e6a2cbc7617b7b644485a2e674d399e9caab78.css integrity="sha256-eLhLRA8mfNy+KAKP6Oaiy8dhe3tkRIWi5nTTmenKq3g=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/js/extended.js></script><link rel=icon href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><link rel=icon type=image/png sizes=16x16 href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><link rel=icon type=image/png sizes=32x32 href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><link rel=apple-touch-icon href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><link rel=mask-icon href=https://yicixin-blog-image.oss-accelerate.aliyuncs.com/img/202211171234877.jpg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=https://www.yici.xin/post/tech/protobuf%E8%AF%AD%E6%B3%95/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css><meta property="og:title" content="Protobuf语法"><meta property="og:description" content='什么是protobuf？
 一种序列化结构数据的方式，与语言无关，与平台无关，可扩展。和json一样，但是更小更快。
 V3语法介绍
 举一个简单的例子，一个分页查询的请求参数，新建一个.proto文件并写入:
@@ -79,7 +78,6 @@ message SearchRequest {
 }
 
 .proto文件的第一行指定了当前正在使用proto3语法，如果未写，proto的编译器会默认使用proto2的语法进行解析。
-
 SearchRequest定义了三个字段，它们都有类型和名称，并且在最后给了一个唯一编号，编号的作用是在序列化后的二进制序列中标识字段。当编号为1-15的范围内时，在编码时只需要一个字节，而16-2047就需要两个字节，具体原因可以了解一下protobuf的编码原理。所以，1-15的编号最好要保留给那些最经常出现的字段。你能使用的最小编号是1，最大是$2^{29}$-1，不过你不能使用19000-19999，这些编号为protobuf的实现而预保留了，如果你使用了，是过不了编译的。
 在单个.proto文件中能定义多个message类型:
 syntax = "proto3";
@@ -146,7 +144,6 @@ message SearchRequest {
 }
 
 .proto文件的第一行指定了当前正在使用proto3语法，如果未写，proto的编译器会默认使用proto2的语法进行解析。
-
 SearchRequest定义了三个字段，它们都有类型和名称，并且在最后给了一个唯一编号，编号的作用是在序列化后的二进制序列中标识字段。当编号为1-15的范围内时，在编码时只需要一个字节，而16-2047就需要两个字节，具体原因可以了解一下protobuf的编码原理。所以，1-15的编号最好要保留给那些最经常出现的字段。你能使用的最小编号是1，最大是$2^{29}$-1，不过你不能使用19000-19999，这些编号为protobuf的实现而预保留了，如果你使用了，是过不了编译的。
 在单个.proto文件中能定义多个message类型:
 syntax = "proto3";

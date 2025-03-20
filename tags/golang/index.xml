@@ -18,8 +18,7 @@
       
       <guid>https://www.yici.xin/post/tech/%E8%BD%AC%E6%8D%A2bytes%E5%92%8Cstring%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;本文golang源码为1.18版本&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;本文golang源码为1.18版本&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;标准转换&#34;&gt;标准转换&lt;/h2&gt;
 &lt;p&gt;使用标准转换是最常见的选择&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#c678dd&#34;&gt;package&lt;/span&gt; &lt;span style=&#34;color:#e06c75&#34;&gt;main&lt;/span&gt;
@@ -285,8 +284,7 @@ waitersCount — 当前互斥锁上等待的 Goroutine 个数；
       <guid>https://www.yici.xin/post/tech/golang-map%E4%BB%8B%E7%BB%8D/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本文中使用的 go 版本：&lt;/p&gt;
-&lt;p&gt;go version go1.17.2 darwin/amd64&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;go version go1.17.2 darwin/amd64&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;内容概述&#34;&gt;内容概述&lt;/h2&gt;
 &lt;p&gt;本文介绍 golang 中经常用到的结构-map，简称哈希表、字典。介绍其结构及设计思路。&lt;/p&gt;
 &lt;h2 id=&#34;map-在源码中的结构hmap&#34;&gt;map 在源码中的结构——hmap&lt;/h2&gt;
